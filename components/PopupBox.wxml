@@ -1,0 +1,22 @@
+<view class="popupBox data-v-0d6b6140">
+    <view class="alert scale data-v-0d6b6140" style="{{indeximgs?'margin: 0 35px':''}}">
+        <view class="area data-v-0d6b6140">
+            <image bindtap="__e" class="close-img data-v-0d6b6140" data-event-opts="{{[ [ 'tap',[ ['closePopup'] ] ] ]}}" mode="widthFix" src="{{closeIcon}}" style="{{indeximgs?'top:-30rpx;right:-30rpx':''}}"></image>
+            <view class="content data-v-0d6b6140" style="{{indeximgs?'background:rgba(0,0,0,0)':''}}">
+                <block wx:if="{{contents}}">
+                    <image class="top-img data-v-0d6b6140" mode="widthFix" src="{{topImg}}"></image>
+                    <view class="title data-v-0d6b6140">{{'已更新'+contents.update+'条测试'}}</view>
+                    <view class="list-wrap data-v-0d6b6140">
+                        <view bindtap="__e" class="list data-v-0d6b6140" data-event-opts="{{[ [ 'tap',[ [ 'toQuestion',['$0'],[ [ ['contents.items','',i] ] ] ] ] ] ]}}" wx:if="{{i<6}}" wx:for="{{contents.items}}" wx:for-index="i" wx:key="i">
+                            <view class="dot data-v-0d6b6140"></view>
+                            <view class="professional data-v-0d6b6140">{{''+item.title+''}}</view>
+                            <view class="new data-v-0d6b6140" wx:if="{{i<contents.update}}">New</view>
+                        </view>
+                    </view>
+                </block>
+                <image bindtap="__e" class="data-v-0d6b6140" data-event-opts="{{[ [ 'tap',[ ['jump'] ] ] ]}}" mode="widthFix" src="{{indeximgs.src}}" style="width:100%;" wx:if="{{indeximgs}}"></image>
+            </view>
+        </view>
+        <view bindtap="__e" class="view-all flex-center data-v-0d6b6140" data-event-opts="{{[ [ 'tap',[ ['showAllContents'] ] ] ]}}" wx:if="{{contents}}">查看全部更新</view>
+    </view>
+</view>

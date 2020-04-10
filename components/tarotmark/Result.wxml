@@ -1,0 +1,27 @@
+<view class="{{['result-box data-v-7801d948',page_statues?'show':'']}}" style="{{'background-image:'+'url('+images.result_bottom+')'+';'+'padding-top:'+nav_height+';'}}">
+    <view class="img-box data-v-7801d948" style="{{'height:'+canvas.height+';'}}">
+        <image bindlongpress="__e" class="canvas-img data-v-7801d948" data-event-opts="{{[ [ 'longpress',[ [ 'shareList',['$event'] ] ] ] ]}}" src="{{img_src}}" style="{{'height:'+canvas.height+';'+'width:'+canvas.width+';'}}"></image>
+    </view>
+    <veiw bind:__l="__l" class="{{['bottom-box data-v-7801d948',bottom_statues?'show':'']}}" vueId="1" vueSlots="{{['default']}}">
+        <view class="btn-box data-v-7801d948">
+            <image bindtap="__e" class="data-v-7801d948" data-event-opts="{{[ [ 'tap',[ [ 'more',['$event'] ] ] ] ]}}" mode="widthFix" src="{{images.more}}" style="height:auto;"></image>
+            <image bindtap="__e" class="data-v-7801d948" data-event-opts="{{[ [ 'tap',[ [ 'shareQzone',['$event'] ] ] ] ]}}" mode="widthFix" src="{{images.share}}" style="height:auto;"></image>
+        </view>
+    </veiw>
+    <image bindtap="__e" class="{{['again data-v-7801d948',bottom_statues?'show':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'again',['$event'] ] ] ] ]}}" mode="widthFix" src="{{images.again}}" style="height:auto;"></image>
+    <view class="loading data-v-7801d948" wx:if="{{loading_statues}}">
+        <view class="loading-center data-v-7801d948">
+            <view class="loading-center-absolute data-v-7801d948">
+                <view class="object first_object data-v-7801d948" style="{{'background-color:'+explain_color+';'}}"></view>
+                <view class="object second_object data-v-7801d948" style="{{'float:right;'+'background-color:'+explain_color+';'}}"></view>
+            </view>
+        </view>
+        <text class="loading-tip data-v-7801d948" style="{{'color:'+explain_color+';'}}">正在分析结果…</text>
+    </view>
+    <view bindtap="__e" class="shareButton data-v-7801d948" data-event-opts="{{[ [ 'tap',[ [ 'cancelShare',['$event'] ] ] ] ]}}" wx:if="{{showshare}}">
+        <view class="btn_box data-v-7801d948">
+            <button class="btn shareBtn data-v-7801d948" openType="share">发送给好友</button>
+        </view>
+        <button bindtap="__e" class="cancelbtn data-v-7801d948" data-event-opts="{{[ [ 'tap',[ [ 'cancelShare',['$event'] ] ] ] ]}}">取消</button>
+    </view>
+</view>

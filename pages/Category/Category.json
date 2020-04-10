@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "分类",
+    "disableScroll": true,
+    "usingComponents": {
+        "navgation-box": "/components/NavgationBox",
+        "search-box": "/components/SearchBox",
+        "select-star-box": "/components/SelectStar"
+    }
+}

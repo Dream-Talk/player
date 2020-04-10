@@ -1,0 +1,9 @@
+<view class="xb_conversation_item data-v-5df7941c">
+    <view class="xb_conv_wrap_left data-v-5df7941c">
+        <image class="xb_avatar_left _img data-v-5df7941c" src="https://ssl-tanme.cdn.itwlw.com/common/img/tanme.jpg"></image>
+        <view class="xb_box data-v-5df7941c">
+            <view class="xb_tri_left data-v-5df7941c"></view>
+        </view>
+        <view class="xb_conv_left   data-v-5df7941c">{{''+content+''}}</view>
+    </view>
+</view>

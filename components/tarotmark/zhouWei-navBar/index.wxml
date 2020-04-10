@@ -1,0 +1,40 @@
+<view class="data-v-ba24d200">
+    <view class="{{['header data-v-ba24d200',navFixed?'fixed':'',type=='transparent'?'absolute':'',navLine?'line':'',isWhite?'colorWhite':'',themeBgColor?'themeBgColor':'']}}" style="{{'padding-top:'+statusBarHeight+'px'+';'+'background-image:'+navBgColor+';'+'color:'+navFontColor+';'+'opacity:'+transparentValue+';'}}">
+        <view class="left_box data-v-ba24d200">
+            <slot name="left" wx:if="{{$slots.left}}"></slot>
+            <block wx:else>
+                <view class="{{['left_info data-v-ba24d200',isTwoBtn?'btnMongol':'']}}" wx:if="{{back||$slots.left||home}}">
+                    <view bindtap="__e" class="back data-v-ba24d200" data-event-opts="{{[ [ 'tap',[ [ 'onBackPage',['$event'] ] ] ] ]}}" wx:if="{{back&&!firstPage}}"></view>
+                    <text class="data-v-ba24d200" wx:if="{{isTwoBtn}}"></text>
+                    <view bindtap="__e" class="home data-v-ba24d200" data-event-opts="{{[ [ 'tap',[ [ 'onBackHome',['$event'] ] ] ] ]}}" wx:if="{{firstPage&&back||home}}"></view>
+                </view>
+            </block>
+            <view class="{{['title data-v-ba24d200',titleCenter?'center':'',navFontColor?'color':'']}}" wx:if="{{$slots.default||navTitle}}">
+                <slot wx:if="{{$slots.default}}"></slot>
+                <block wx:else>{{navTitle}}</block>
+            </view>
+        </view>
+        <view class="right_info data-v-ba24d200">
+            <slot name="right"></slot>
+        </view>
+    </view>
+    <view class="{{['header transparentFixed fixed data-v-ba24d200',isWhite?'colorWhite':'']}}" style="{{'padding-top:'+statusBarHeight+'px'+';'+'color:'+navTransparentFixedFontColor+';'+'opacity:'+1-transparentValue+';'+'z-index:'+(transparentValue<0.3?100:90)+';'}}" wx:if="{{type=='transparentFixed'}}">
+        <view class="left_box data-v-ba24d200">
+            <slot name="transparentFixedLeft" wx:if="{{$slots.transparentFixedLeft}}"></slot>
+            <block wx:else>
+                <view class="left_info data-v-ba24d200" wx:if="{{back||$slots.left||home}}">
+                    <view bindtap="__e" class="back data-v-ba24d200" data-event-opts="{{[ [ 'tap',[ [ 'onBackPage',['$event'] ] ] ] ]}}" wx:if="{{back&&!firstPage}}"></view>
+                    <text class="data-v-ba24d200" wx:if="{{isTwoBtn}}"></text>
+                </view>
+            </block>
+            <view class="{{['title data-v-ba24d200',titleCenter?'center':'']}}" wx:if="{{$slots.default||navTitle}}">
+                <slot name="transparentFixed" wx:if="{{$slots.transparentFixed}}"></slot>
+                <block wx:else>{{navTitle}}</block>
+            </view>
+        </view>
+        <view class="right_info data-v-ba24d200">
+            <slot name="transparentFixedRight"></slot>
+        </view>
+    </view>
+    <view class="station data-v-ba24d200" style="{{'padding-top:'+statusBarHeight+'px'+';'}}" wx:if="{{type=='fixed'}}"></view>
+</view>

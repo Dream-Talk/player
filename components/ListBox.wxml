@@ -1,0 +1,19 @@
+<view class="list-box data-v-734ceb00">
+    <block wx:for="{{lists}}" wx:for-index="i" wx:key="i">
+        <view bindtap="__e" class="list-item data-v-734ceb00" data-event-opts="{{[ [ 'tap',[ [ 'toQuestion',['$0'],[ [ ['lists','',i] ] ] ] ] ] ]}}" wx:if="{{!item.isAds}}">
+            <view class="item-detail data-v-734ceb00">
+                <view class="title data-v-734ceb00">
+                    <view class="title_content data-v-734ceb00">{{''+item.title+''}}</view>
+                </view>
+                <text class="desc data-v-734ceb00">{{item.desc}}</text>
+                <view class="space data-v-734ceb00"></view>
+                <view class="line data-v-734ceb00">
+                    <text class="view data-v-734ceb00">{{item.view+'万人在测'}}</text>
+                </view>
+            </view>
+            <image class="item-picture data-v-734ceb00" mode="widthFix" src="{{item.img}}"></image>
+        </view>
+        <ad class="swiper-ad data-v-734ceb00" unitId="{{item.ad_id}}" wx:if="{{item.isAds}}"></ad>
+        <view class="ad-bottom data-v-734ceb00" wx:if="{{item.isAds}}"></view>
+    </block>
+</view>

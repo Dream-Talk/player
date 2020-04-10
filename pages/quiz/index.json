@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "answer-box": "/components/AnswerBox",
+        "author-box": "/components/AuthorBox",
+        "question-num": "/components/QuestionNum"
+    }
+}

@@ -1,0 +1,59 @@
+<view class="data-v-75b8ba46">
+    <view class="container data-v-75b8ba46" wx:if="{{current}}">
+        <scroll-view scrollY bindscrolltolower="__e" class="scroll data-v-75b8ba46" data-event-opts="{{[ [ 'scrolltolower',[ ['getPagedata'] ] ] ]}}" style="{{listshow?'':'padding-bottom:0px'}}">
+            <view class="search-box data-v-75b8ba46">
+                <view class="search-group data-v-75b8ba46">
+                    <input disabled bindtap="__e" class="search-input data-v-75b8ba46" data-event-opts="{{[ [ 'tap',[ [ 'switchContent',[false] ] ] ] ]}}" placeholder="{{'大家都在搜: '+(searchitem.title?searchitem.title:'')}}" type="text"></input>
+                    <view bindtap="__e" class="search-icon data-v-75b8ba46" data-event-opts="{{[ [ 'tap',[ [ 'search',['$0'],['searchitem.keyword'] ] ] ] ]}}">
+                        <image class="data-v-75b8ba46" mode="widthFix" src="{{searchIcon}}"></image>
+                    </view>
+                </view>
+            </view>
+            <swiper-box banners="{{banners}}" bind:__l="__l" class="data-v-75b8ba46" height="{{height}}" vueId="1"></swiper-box>
+            <grid-box bind:__l="__l" class="data-v-75b8ba46" recommend="{{recommend}}" vueId="2"></grid-box>
+            <view class="wrap data-v-75b8ba46">
+                <view class="groupBox data-v-75b8ba46" wx:if="{{showgroupBox}}">
+                    <image bindtap="__e" class="groupclose data-v-75b8ba46" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}" src="{{groupclose}}"></image>
+                    <button class="groupicon data-v-75b8ba46" groupId="{{qqGroupid}}" openType="openGroupProfile">
+                        <image class="data-v-75b8ba46" mode="widthFix" src="{{groupicon}}"></image>
+                    </button>
+                </view>
+                <view class="wrap-title data-v-75b8ba46">全部测试</view>
+                <list-box bind:__l="__l" class="data-v-75b8ba46" list="{{latest}}" vueId="3"></list-box>
+                <view class="loading data-v-75b8ba46" wx:if="{{!load}}">
+                    <image class="icon data-v-75b8ba46" mode="widthFix" src="{{waitIcon}}"></image>加载中...</view>
+            </view>
+        </scroll-view>
+        <navgation-box bind:__l="__l" class="data-v-75b8ba46" navdata="{{navData}}" page="10" vueId="4" wx:if="{{listshow}}"></navgation-box>
+    </view>
+    <view class="search-page data-v-75b8ba46" wx:else>
+        <view class="search-box data-v-75b8ba46">
+            <view class="search-group data-v-75b8ba46">
+                <input bindconfirm="__e" bindinput="__e" class="search-input data-v-75b8ba46" data-event-opts="{{[ [ 'confirm',[ [ 'search',[''] ] ] ],[ 'input',[ [ '__set_model',[ '','keyword','$event',[] ] ] ] ] ]}}" focus="{{focus}}" placeholder="请输入测试名称或关键字" type="text" value="{{keyword}}"></input>
+                <view bindtap="__e" class="search-icon data-v-75b8ba46" data-event-opts="{{[ [ 'tap',[ [ 'search',[''] ] ] ] ]}}">
+                    <image class="data-v-75b8ba46" mode="widthFix" src="{{searchIcon}}"></image>
+                </view>
+            </view>
+            <view bindtap="__e" class="cancel data-v-75b8ba46" data-event-opts="{{[ [ 'tap',[ [ 'switchContent',[true] ] ] ] ]}}">取消</view>
+        </view>
+        <view class="wrap data-v-75b8ba46">
+            <view class="wrap-title data-v-75b8ba46">热门搜索</view>
+            <view class="items-box data-v-75b8ba46">
+                <view class="item-box data-v-75b8ba46">
+                    <view bindtap="__e" class="item data-v-75b8ba46" data-event-opts="{{[ [ 'tap',[ [ 'toSearch',['$0'],[ [ ['searchRmd','',i] ] ] ] ] ] ]}}" wx:if="{{i<3}}" wx:for="{{searchRmd}}" wx:for-index="i" wx:key="i">{{''+item.title+''}}</view>
+                </view>
+                <view class="item-box data-v-75b8ba46">
+                    <view bindtap="__e" class="item data-v-75b8ba46" data-event-opts="{{[ [ 'tap',[ [ 'toSearch',['$0'],[ [ ['searchRmd','',i] ] ] ] ] ] ]}}" wx:if="{{i>2}}" wx:for="{{searchRmd}}" wx:for-index="i" wx:key="i">{{''+item.title+''}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="wrap data-v-75b8ba46">
+            <view class="wrap-title data-v-75b8ba46">精选测试</view>
+            <list-box bind:__l="__l" class="data-v-75b8ba46" list="{{featured}}" vueId="5"></list-box>
+        </view>
+    </view>
+    <popup-box bind:__l="__l" class="data-v-75b8ba46" content="{{popup}}" vueId="6" wx:if="{{dailybox}}"></popup-box>
+    <popup-box bind:__l="__l" class="data-v-75b8ba46" indeximg="{{indexImg}}" vueId="7" wx:if="{{showindeximg}}"></popup-box>
+    <poptest-box bind:__l="__l" class="data-v-75b8ba46" indextest="{{newScanData.data}}" vueId="8" wx:if="{{showtestbox}}"></poptest-box>
+    <select-star-box bind:__l="__l" class="data-v-75b8ba46" vueId="9" wx:if="{{selectstar}}"></select-star-box>
+</view>

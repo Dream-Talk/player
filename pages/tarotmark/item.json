@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "塔罗新年签",
+    "disableScroll": true,
+    "navigationBarBackgroundColor": "#1e1c17",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "result": "/components/tarotmark/Result",
+        "nav-bar": "/components/tarotmark/zhouWei-navBar/index"
+    }
+}

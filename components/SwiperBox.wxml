@@ -1,0 +1,12 @@
+<view class="swiper-box data-v-4b392d42">
+    <swiper autoplay="{{autoplay}}" circular="{{true}}" class="swiper data-v-4b392d42" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" wx:if="{{!bannersP[0].isAds}}">
+        <swiper-item bindtap="__e" class="data-v-4b392d42" data-event-opts="{{[ [ 'tap',[ [ 'openQuiz',['$0'],[ [ ['bannersP','',i] ] ] ] ] ] ]}}" wx:for="{{bannersP}}" wx:for-index="i" wx:key="i">
+            <view class="swiper-item data-v-4b392d42">
+                <image class="swiper-picture data-v-4b392d42" mode="widthFix" src="{{'http://uploads-admin.cdn.woquhudong.cn/'+item.img_url}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+    <scroll-view scrollY class="swiper-ad data-v-4b392d42">
+        <ad class="data-v-4b392d42" unitId="{{bannersP[0].ad_id}}" wx:if="{{bannersP[0].isAds}}"></ad>
+    </scroll-view>
+</view>

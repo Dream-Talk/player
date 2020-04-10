@@ -1,0 +1,19 @@
+<view class="list-box data-v-4f8fd974" wx:if="{{list[0]}}">
+    <view class="titletext data-v-4f8fd974">热门推荐</view>
+    <view class="sanjiao data-v-4f8fd974"></view>
+    <view bindtap="__e" class="list-item data-v-4f8fd974" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$0'],[ [ ['list','',i] ] ] ] ] ] ]}}" wx:for="{{list}}" wx:for-index="i" wx:key="i">
+        <image class="item-picture data-v-4f8fd974" src="{{'https://ssl-uploads-admin.cdn.itwlw.com/'+item.icon}}"></image>
+        <view class="item-detail data-v-4f8fd974">
+            <view class="title data-v-4f8fd974">
+                <view class="title_content data-v-4f8fd974">{{''+item.title+''}}</view>
+                <image class="hoticon data-v-4f8fd974" src="https://ssl-uploads-admin.cdn.itwlw.com/quce/1577345928em7Jk.png"></image>
+                <image class="jumplist data-v-4f8fd974" mode="widthFix" src="https://ssl-uploads-admin.cdn.itwlw.com/quce/1577345945sSryv.png"></image>
+            </view>
+            <text class="desc data-v-4f8fd974">{{item.desc}}</text>
+            <view class="space data-v-4f8fd974"></view>
+            <view class="line data-v-4f8fd974" wx:if="{{item.view}}">
+                <text class="view data-v-4f8fd974">{{item.view+'万人在测'}}</text>
+            </view>
+        </view>
+    </view>
+</view>

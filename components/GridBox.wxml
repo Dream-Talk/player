@@ -1,0 +1,19 @@
+<view class="grid-box data-v-6ec0f32e">
+    <view class="grid-top data-v-6ec0f32e">
+        <text class="grid-title data-v-6ec0f32e">精选测评</text>
+    </view>
+    <view class="grid-content data-v-6ec0f32e">
+        <view class="row data-v-6ec0f32e">
+            <view bindtap="__e" class="grid-item data-v-6ec0f32e" data-event-opts="{{[ [ 'tap',[ [ 'viewUrl',['$0'],[ [ ['recommendP','',i] ] ] ] ] ] ]}}" wx:if="{{i<4}}" wx:for="{{recommendP}}" wx:for-index="i" wx:key="i">
+                <image class="item-picture data-v-6ec0f32e" mode="widthFix" src="{{'http://uploads-admin.cdn.woquhudong.cn/'+item.img+'?imageView2/1/w/200/h/200'}}"></image>
+                <text class="item-title data-v-6ec0f32e">{{item.title}}</text>
+            </view>
+        </view>
+        <view class="row data-v-6ec0f32e">
+            <view bindtap="__e" class="grid-item data-v-6ec0f32e" data-event-opts="{{[ [ 'tap',[ [ 'viewUrl',['$0'],[ [ ['recommendP','',i] ] ] ] ] ] ]}}" wx:if="{{i>3}}" wx:for="{{recommendP}}" wx:for-index="i" wx:key="i">
+                <image class="item-picture data-v-6ec0f32e" mode="widthFix" src="{{'http://uploads-admin.cdn.woquhudong.cn/'+item.img+'?imageView2/1/w/200/h/200'}}"></image>
+                <text class="item-title data-v-6ec0f32e">{{item.title}}</text>
+            </view>
+        </view>
+    </view>
+</view>

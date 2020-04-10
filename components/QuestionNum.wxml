@@ -1,0 +1,3 @@
+<view class="num-box data-v-d2b10254">
+    <view class="num-content data-v-d2b10254">{{'第'+contents.num+'题/共'+content.len+'题'}}</view>
+</view>

@@ -1,0 +1,37 @@
+<view class="vue-cropper data-v-308e31bc vue-ref" data-ref="cropper" hidden="{{!show}}" style="{{'top:'+containerTop+'px'+';'}}">
+    <view class="cropper-box data-v-308e31bc">
+        <view catchtouchend="__e" catchtouchmove="__e" catchtouchstart="__e" class="cropper-box-canvas data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'imgTouchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'imgMoveing',['$event'] ] ] ],[ 'touchend',[ [ 'imgMoveEnd',['$event'] ] ] ] ]}}" style="{{'width:'+imageWidth+'px'+';'+'height:'+imageHeight+'px'+';'+'transform:'+'scale('+scale+','+scale+') '+'translate3d('+x/scale+'px,'+y/scale+'px,'+'0)'+'rotateZ('+rotate*90+'deg)'+';'}}">
+            <image alt="cropper-img" class="uni-image data-v-308e31bc vue-ref" data-ref="cropperImg" mode="scaleToFill" src="{{src}}"></image>
+        </view>
+    </view>
+    <view class="cropper-drag-box cropper-modal cropper-move pointer-events data-v-308e31bc"></view>
+    <view class="{{['cropper-crop-box data-v-308e31bc',cropFixed?'pointer-events':'']}}" style="{{'width:'+cropW+'px'+';'+'height:'+cropH+'px'+';'+'transform:'+'translate3d('+cropOffsertX+'px,'+cropOffsertY+'px,'+'0)'+';'}}">
+        <view class="cropper-view-box data-v-308e31bc">
+            <image alt="cropper-img" class="data-v-308e31bc" mode="scaleToFill" src="{{src}}" style="{{'width:'+imageWidth+'px'+';'+'height:'+imageHeight+'px'+';'+'transform:'+'scale('+scale+','+scale+') '+'translate3d('+(x-cropOffsertX)/scale+'px,'+(y-cropOffsertY)/scale+'px,'+'0)'+'rotateZ('+rotate*90+'deg)'+';'}}"></image>
+        </view>
+        <view catchtouchmove="__e" catchtouchstart="__e" class="cropper-face cropper-move data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'touchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'cropMoveing',['$event'] ] ] ] ]}}" wx:if="{{!cropFixed}}"></view>
+        <view class="crop-line line-w data-v-308e31bc"></view>
+        <view class="crop-line line-a data-v-308e31bc"></view>
+        <view class="crop-line line-s data-v-308e31bc"></view>
+        <view class="crop-line line-d data-v-308e31bc"></view>
+        <block wx:if="{{!cropFixed}}">
+            <view catchtouchmove="__e" catchtouchstart="__e" class="crop-point point-lt data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'touchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'dragMove',['$event','left-top'] ] ] ] ]}}"></view>
+            <view catchtouchmove="__e" catchtouchstart="__e" class="crop-point point-mt data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'touchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'dragMove',['$event','middle-top'] ] ] ] ]}}"></view>
+            <view catchtouchmove="__e" catchtouchstart="__e" class="crop-point point-rt data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'touchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'dragMove',['$event','right-top'] ] ] ] ]}}"></view>
+            <view catchtouchmove="__e" catchtouchstart="__e" class="crop-point point-ml data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'touchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'dragMove',['$event','middle-left'] ] ] ] ]}}"></view>
+            <view catchtouchmove="__e" catchtouchstart="__e" class="crop-point point-mr data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'touchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'dragMove',['$event','middle-right'] ] ] ] ]}}"></view>
+            <view catchtouchmove="__e" catchtouchstart="__e" class="crop-point point-lb data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'touchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'dragMove',['$event','left-bottom'] ] ] ] ]}}"></view>
+            <view catchtouchmove="__e" catchtouchstart="__e" class="crop-point point-mb data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'touchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'dragMove',['$event','middle-bottom'] ] ] ] ]}}"></view>
+            <view catchtouchmove="__e" catchtouchstart="__e" class="crop-point point-rb data-v-308e31bc" data-event-opts="{{[ [ 'touchstart',[ [ 'touchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'dragMove',['$event','right-bottom'] ] ] ] ]}}"></view>
+        </block>
+    </view>
+    <canvas canvasId="myCanvas" class="cropper-canvas data-v-308e31bc" style="{{'width:'+cropW+'px'+';'+'height:'+cropH+'px'+';'}}"></canvas>
+    <view class="btn-group data-v-308e31bc">
+        <view bindtap="__e" class="btn-item reset-btn data-v-308e31bc" data-event-opts="{{[ [ 'tap',[ [ 'init',['$event'] ] ] ] ]}}" hidden="{{!showResetBtn}}"></view>
+        <view bindtap="__e" class="btn-item rotate-btn data-v-308e31bc" data-event-opts="{{[ [ 'tap',[ [ 'rotateHandler',['$event'] ] ] ] ]}}" hidden="{{!showRotateBtn}}"></view>
+    </view>
+    <view class="uni-info__ft data-v-308e31bc">
+        <view bindtap="__e" class="uni-modal__btn uni-modal__btn_default data-v-308e31bc" data-event-opts="{{[ [ 'tap',[ [ 'cancel',['$event'] ] ] ] ]}}" style="color:rgb(0, 0, 0);">取消</view>
+        <view bindtap="__e" class="uni-modal__btn uni-modal__btn_primary data-v-308e31bc" data-event-opts="{{[ [ 'tap',[ [ 'confirm',['$event'] ] ] ] ]}}" style="color:rgb(0, 122, 255);">确定</view>
+    </view>
+</view>

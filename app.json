@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/home/index",
+    "p/i",
+    "pages/Category/Category",
+    "pages/christmas/result",
+    "pages/christmas/index",
+    "pages/quiz/index",
+    "pages/question/index",
+    "pages/quizchoiceness/index",
+    "pages/Search/Search",
+    "pages/tanmegame/game",
+    "pages/tarotmark/item"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "static/nav-icon/home_icon_unselect.png",
+        "selectedIconPath": "static/nav-icon/home_icon_select.png"
+      },
+      {
+        "pagePath": "pages/Category/Category",
+        "text": "分类",
+        "iconPath": "static/nav-icon/class_icon_unselect.png",
+        "selectedIconPath": "static/nav-icon/class_icon_select.png"
+      }
+    ],
+    "color": "#323232",
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#323232"
+  },
+  "navigateToMiniProgramAppIdList": [
+  ],
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,9 @@
+<view class="xb_conversation_item data-v-d8fb415c">
+    <view class="xb_conv_wrap_right data-v-d8fb415c">
+        <image class="xb_avatar_right _img data-v-d8fb415c" src="{{userurl}}"></image>
+        <view class="xb_box data-v-d8fb415c">
+            <view class="xb_tri_right data-v-d8fb415c"></view>
+        </view>
+        <view class="xb_conv_right data-v-d8fb415c">{{''+ucontent+''}}</view>
+    </view>
+</view>

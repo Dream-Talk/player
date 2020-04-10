@@ -1,0 +1,90 @@
+<view class="mainbox data-v-205cbec8" id="inputbox">
+    <scroll-view class="data-v-205cbec8" scrollIntoView="{{scrollId}}" scrollWithAnimation="true" scrollY="true" style="height:89.5vh;">
+        <view class="data-v-205cbec8" id="{{'id'+i}}" wx:for="{{contentmsg}}" wx:for-index="i" wx:key="i">
+            <msg bind:__l="__l" class="data-v-205cbec8" content="{{item.msg}}" vueId="{{'1-'+i}}" wx:if="{{item.temp=='msg'}}"></msg>
+            <umsg bind:__l="__l" class="data-v-205cbec8" ucontent="{{item.umsg}}" userurl="{{item.usericon}}" vueId="{{'2-'+i}}" wx:if="{{item.temp=='umsg'}}"></umsg>
+            <msgimg bind:__l="__l" class="data-v-205cbec8" m_img="{{item.msgimg}}" vueId="{{'3-'+i}}" wx:if="{{item.temp=='msgimg'}}"></msgimg>
+            <userimg-box bind:__l="__l" class="data-v-205cbec8" u_img="{{item.uimg}}" userurl="{{item.usericon}}" vueId="{{'4-'+i}}" wx:if="{{item.temp=='uimg'}}"></userimg-box>
+            <resimg bind:__l="__l" bind:fpreview="__e" bind:fsaveimg="__e" class="data-v-205cbec8" data-event-opts="{{[ [ '^fpreview',[ ['fpreview'] ] ],[ '^fsaveimg',[ ['fsaveimg'] ] ] ]}}" r_img="{{item.resimg}}" resheight="{{gameheight}}" vueId="{{'5-'+i}}" wx:if="{{item.temp=='resimg'}}"></resimg>
+        </view>
+    </scroll-view>
+    <view class="xb_btn_area data-v-205cbec8" id="xb_btn_field">
+        <view class="xb_span_1 data-v-205cbec8" wx:if="{{ischeck==0}}">
+            <input bindinput="__e" class="xb_input data-v-205cbec8" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','isinput','$event',[] ] ] ] ] ]}}" disabled="{{sendbtn}}" id="inp" maxlength="{{15}}" placeholder="请输入姓名" type="text" value="{{isinput}}"></input>
+        </view>
+        <view class="xb_view_btn data-v-205cbec8" wx:if="{{ischeck==0}}">
+            <button bindgetuserinfo="__e" class="xb_btn data-v-205cbec8" data-event-opts="{{[ [ 'getuserinfo',[ [ 'getuserinfo',['$event'] ] ] ] ]}}" disabled="{{sendbtn}}" openType="getUserInfo">发送</button>
+        </view>
+        <view class="xb_foot_btn data-v-205cbec8" wx:if="{{ischeck==1}}">
+            <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'fileImg',['$event'] ] ] ] ]}}" disabled="{{filebtn}}">上传图片</button>
+            <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'queren',['$event'] ] ] ] ]}}" disabled="{{filebtn}}">确认使用</button>
+        </view>
+        <view class="xb_foot_btn data-v-205cbec8" wx:if="{{ischeck==2}}">
+            <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'searchsex_m',['$event'] ] ] ] ]}}" disabled="{{sexbtn}}">男</button>
+            <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'searchsex_w',['$event'] ] ] ] ]}}" disabled="{{sexbtn}}">女</button>
+        </view>
+        <view class="xb_foot_btn data-v-205cbec8" wx:if="{{ischeck==3}}">
+            <button class="data-v-205cbec8" openType="share">叫人来测</button>
+            <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'shareqzon',['$event'] ] ] ] ]}}">发到说说</button>
+        </view>
+        <view class="xb_foot_btn data-v-205cbec8" wx:if="{{ischeck==4}}">
+            <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'gohome',['$event'] ] ] ] ]}}">返回首页</button>
+            <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'watchBanner',['$event'] ] ] ] ]}}">看视频解锁结果</button>
+        </view>
+    </view>
+    <canvas canvasId="myCanvas" class="data-v-205cbec8" style="width:810px;height:1080px;position:fixed;top:-99999rpx;background:#4CD964;"></canvas>
+    <view class="popupBox data-v-205cbec8" wx:if="{{showmodel}}">
+        <view class="alert scale data-v-205cbec8" style="{{showbannerad?'':'width:680rpx'}}">
+            <view class="area data-v-205cbec8">
+                <view class="content data-v-205cbec8" style="{{!showbannerad&&banner_ad_style==1?'overflow: hidden;':''}}">
+                    <image class="top-img data-v-205cbec8" mode="widthFix" src="{{topimg}}" wx:if="{{showbannerad||banner_ad_style==2}}"></image>
+                    <block wx:if="{{showbannerad}}">
+                        <view class="list-wrap data-v-205cbec8">
+                            <view class="list data-v-205cbec8" wx:if="{{showbannerad}}" wx:for="{{modelList}}" wx:for-index="i" wx:key="i">{{''+item+''}}</view>
+                            <view class="list data-v-205cbec8" wx:if="{{!showbannerad}}" wx:for="{{adcontent}}" wx:for-index="i" wx:key="i">{{''+item+''}}</view>
+                        </view>
+                        <view class="button data-v-205cbec8" wx:if="{{showbannerad}}">
+                            <view bindtap="__e" class="cancal btn data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ ['cancalModel'] ] ] ]}}" wx:if="{{!forcebutton}}">{{''+adBox_cancel_btn+''}}</view>
+                            <view bindtap="__e" class="watch btn data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'watchBanner',['$event'] ] ] ] ]}}" wx:if="{{!forcebutton}}">
+                                <image class="videoIcon data-v-205cbec8" mode="widthFix" src="http://ssl-uploads-admin.cdn.itwlw.com/quce/1577070421armJG.png"></image>
+                                <view class="videoIcon-text data-v-205cbec8">{{''+adBox_video_btn+''}}</view>
+                            </view>
+                            <view class="watch_btn data-v-205cbec8" wx:if="{{forcebutton}}">
+                                <image bindtap="__e" class="watch_image data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'watchBanner',['$event'] ] ] ] ]}}" mode="widthFix" src="http://ssl-uploads-admin.cdn.itwlw.com/quce/1577070482WTBJd.png"></image>
+                            </view>
+                        </view>
+                    </block>
+                    <view class="list-wrap data-v-205cbec8" wx:if="{{!showbannerad&&banner_ad_style==2}}">
+                        <view class="list data-v-205cbec8" wx:if="{{!showbannerad}}" wx:for="{{adcontent}}" wx:for-index="i" wx:key="i">{{''+item+''}}</view>
+                    </view>
+                    <view class="progress-box data-v-205cbec8" style="{{banner_ad_style==1?'height: 7rpx;padding-left: 0; margin-bottom: 0;margin-top: 0;':''}}" wx:if="{{!showbannerad}}">
+                        <view class="progress-out data-v-205cbec8" style="{{banner_ad_style==1?'width: 100%;height: 7rpx;border-radius: 4px;background-color: #fff;':''}}">
+                            <view class="{{['data-v-205cbec8',banner_ad_style==1?'progress-in-new':'progress-in']}}" style="{{'animation-duration:'+transitiontime/10+'s'}}"></view>
+                        </view>
+                        <view class="progress-text data-v-205cbec8" wx:if="{{banner_ad_style==2}}">{{''+progresspercent+'%'}}</view>
+                    </view>
+                    <view class="adtext data-v-205cbec8" wx:if="{{!showbannerad&&banner_ad_style==1}}">{{''+adcontent+''}}</view>
+                    <view class="text-box data-v-205cbec8" wx:if="{{!showbannerad&&banner_ad_style==2}}">
+                        <view class="text-left data-v-205cbec8"></view>等太久了，先去玩玩别的吧</view>
+                    <scroll-view scrollY class="swiper-ad data-v-205cbec8">
+                        <ad class="data-v-205cbec8" unitId="{{banneradutilid}}" wx:if="{{!showbannerad}}"></ad>
+                    </scroll-view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footshare data-v-205cbec8" hidden="{{!footbox}}">
+        <view bindtap="__e" class="footshadow data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'clearbox',['$event'] ] ] ] ]}}"></view>
+        <view class="footare data-v-205cbec8">
+            <view class="shareview_1 data-v-205cbec8">
+                <button class="data-v-205cbec8" openType="share" shareType="1">发送给好友</button>
+                <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'shareqzon',['$event'] ] ] ] ]}}">分享到说说</button>
+                <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'saveImg',['$event'] ] ] ] ]}}" style="border-bottom:none;">保存图片</button>
+            </view>
+            <view class="shareview_2 data-v-205cbec8">
+                <button bindtap="__e" class="data-v-205cbec8" data-event-opts="{{[ [ 'tap',[ [ 'clearbox',['$event'] ] ] ] ]}}">取消</button>
+            </view>
+        </view>
+    </view>
+    <image-cropper bind:__l="__l" bind:cancel="__e" bind:confirm="__e" class="data-v-205cbec8" cropFixed="{{true}}" cropHeight="300" cropWidth="300" data-event-opts="{{[ [ '^confirm',[ ['confirm'] ] ],[ '^cancel',[ ['cancel'] ] ] ]}}" src="{{uploadimg}}" vueId="6"></image-cropper>
+</view>

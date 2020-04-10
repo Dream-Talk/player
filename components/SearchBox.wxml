@@ -1,0 +1,8 @@
+<view class="search-box data-v-46462fb7">
+    <view class="search-group data-v-46462fb7">
+        <input bindconfirm="__e" bindinput="__e" class="search-input data-v-46462fb7" data-event-opts="{{[ [ 'confirm',[ ['toSearch'] ] ],[ 'input',[ [ '__set_model',[ '','keyword','$event',[] ] ] ] ] ]}}" placeholder="请输入测试名称或关键字" type="text" value="{{keyword}}"></input>
+        <view bindtap="__e" class="search-icon data-v-46462fb7" data-event-opts="{{[ [ 'tap',[ ['toSearch'] ] ] ]}}">
+            <image class="data-v-46462fb7" mode="widthFix" src="{{searchIcon}}"></image>
+        </view>
+    </view>
+</view>

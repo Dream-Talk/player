@@ -1,0 +1,7 @@
+<view class="answer-box data-v-3c330d24">
+    <image class="author-avatar data-v-3c330d24" mode="widthFix" src="{{authorAvatar}}"></image>
+    <view class="content-box data-v-3c330d24">
+        <view class="content data-v-3c330d24">{{contents.text}}</view>
+    </view>
+    <image class="answer-avatar data-v-3c330d24" mode="widthFix" src="{{contents.avatar}}"></image>
+</view>

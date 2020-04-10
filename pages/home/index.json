@@ -1,0 +1,13 @@
+{
+    "navigationBarTitleText": "乐趣小测试",
+    "usingComponents": {
+        "search-box": "/components/SearchBox",
+        "swiper-box": "/components/SwiperBox",
+        "grid-box": "/components/GridBox",
+        "list-box": "/components/ListBox",
+        "load-box": "/components/LoadBox",
+        "popup-box": "/components/PopupBox",
+        "poptest-box": "/components/PoptestBox",
+        "select-star-box": "/components/SelectStar"
+    }
+}

@@ -1,0 +1,35 @@
+<view class="author-box data-v-64c5f09e">
+    <image class="author-avatar data-v-64c5f09e" src="{{authorAvatar}}"></image>
+    <view class="content-box data-v-64c5f09e">
+        <view class="content-top data-v-64c5f09e">
+            <view class="title data-v-64c5f09e" wx:if="{{contents.question}}">{{contents.question}}</view>
+            <view class="title data-v-64c5f09e" wx:if="{{contents.desc}}">{{contents.desc}}</view>
+            <form bindsubmit="__e" class="data-v-64c5f09e" data-event-opts="{{[ [ 'submit',[ [ 'formSubmit',['$event'] ] ] ] ]}}" reportSubmit="true" wx:if="{{contents.desc&&needAsk}}">
+                <button bindtap="__e" class="{{['data-v-64c5f09e',startstatus?'start':'start disable']}}" data-event-opts="{{[ [ 'tap',[ ['start'] ] ] ]}}" formType="submit">开始测试</button>
+            </form>
+            <form bindsubmit="__e" class="data-v-64c5f09e" data-event-opts="{{[ [ 'submit',[ [ 'formSubmit',['$event'] ] ] ] ]}}" reportSubmit="true" wx:if="{{contents.desc&&!needAsk}}">
+                <button bindtap="__e" class="{{['data-v-64c5f09e',startstatus?'start':'start disable']}}" data-event-opts="{{[ [ 'tap',[ ['overanswer'] ] ] ]}}" formType="submit" wx:if="{{contents.desc&&!needAsk&&!needlogin}}">获取结果</button>
+                <button bindgetuserinfo="__e" class="{{['data-v-64c5f09e',startstatus?'start':'start disable']}}" data-event-opts="{{[ [ 'getuserinfo',[ [ 'getuserinfo',['$event'] ] ] ] ]}}" formType="submit" openType="getUserInfo" wx:if="{{contents.desc&&!needAsk&&needlogin}}">获取结果</button>
+            </form>
+            <image class="picture data-v-64c5f09e" mode="widthFix" src="{{contents.picture}}" wx:if="{{contents.picture}}"></image>
+            <image class="topicImage data-v-64c5f09e" mode="widthFix" src="{{contents.topicImage}}" wx:if="{{contents.topicImage}}"></image>
+            <image bindlongpress="__e" bindtap="__e" class="resultImage data-v-64c5f09e" data-event-opts="{{[ [ 'tap',[ ['viewPicture'] ] ],[ 'longpress',[ [ 'savePicture',[1] ] ] ] ]}}" mode="widthFix" src="{{contents.resultImage}}" wx:if="{{contents.resultImage}}"></image>
+        </view>
+        <image class="promptMessage data-v-64c5f09e" mode="widthFix" src="{{promptMessage}}" wx:if="{{contents.desc}}"></image>
+        <view bindtap="__e" class="audio-box data-v-64c5f09e" data-event-opts="{{[ [ 'tap',[ [ 'playAudiao',['$0'],['contents.audio'] ] ] ] ]}}" wx:if="{{contents.audio}}">
+            <image class="audio-icon data-v-64c5f09e" mode="widthFix" src="{{audiores.icon}}"></image>
+            <view class="audio-red data-v-64c5f09e" wx:if="{{audiores.point}}"></view>
+        </view>
+        <view class="image-wrap data-v-64c5f09e" wx:if="{{contents.picarr}}">
+            <image class="picarr-item data-v-64c5f09e" data-option="{{item.num}}" mode="widthFix" src="{{item.img}}" wx:for="{{contents.options}}" wx:for-index="i" wx:key="i"></image>
+        </view>
+        <view class="options-wrap data-v-64c5f09e" wx:if="{{contents.options}}">
+            <view bindtap="__e" class="option data-v-64c5f09e" data-event-opts="{{[ [ 'tap',[ [ 'nextQuestion',['$0',i],[ [ ['contents.options','',i] ] ] ] ] ] ]}}" wx:for="{{contents.options}}" wx:for-index="i" wx:key="i">
+                <image class="icon data-v-64c5f09e" mode="widthFix" src="{{active==i?selectIcon:unselectIcon}}"></image>
+                <view class="text data-v-64c5f09e">{{item.title?item.title:item.num}}</view>
+            </view>
+        </view>
+        <view bindtap="__e" class="{{['prev-question data-v-64c5f09e',show?'show':'']}}" data-event-opts="{{[ [ 'tap',[ ['prevQuestion'] ] ] ]}}" wx:if="{{contents.prevQuestion}}">重新回答上一题>></view>
+    </view>
+    <image class="answer-avatar data-v-64c5f09e" src="{{answerAvatar}}"></image>
+</view>

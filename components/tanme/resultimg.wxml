@@ -1,0 +1,11 @@
+<view class="xb_conversation_item data-v-ce6b6a06">
+    <view class="xb_conv_wrap_left data-v-ce6b6a06">
+        <image class="xb_avatar_left _img data-v-ce6b6a06" src="https://ssl-tanme.cdn.itwlw.com/common/img/tanme.jpg"></image>
+        <view class="xb_box data-v-ce6b6a06">
+            <view class="xb_tri_left data-v-ce6b6a06"></view>
+        </view>
+        <view class="xb_conv_left data-v-ce6b6a06">
+            <image bindlongpress="__e" bindtap="__e" class="m-img data-v-ce6b6a06" data-event-opts="{{[ [ 'tap',[ [ 'previewimg',['$event'] ] ] ],[ 'longpress',[ [ 'saveimg',['$event'] ] ] ] ]}}" mode="widthFix" src="{{r_img}}" style="{{'height:'+resheight+';'}}"></image>
+        </view>
+    </view>
+</view>

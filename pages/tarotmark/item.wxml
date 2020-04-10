@@ -1,0 +1,77 @@
+<view class="data-v-b692cb06">
+    <view class="page-box data-v-b692cb06" style="{{'background-color:'+backgroundColor+';'+'background-image:'+'url('+images.page_bg+')'+';'+'padding-top:'+nav_height+';'}}" wx:if="{{page_control}}">
+        <view class="{{['card-box data-v-b692cb06',class_show[0]?'show':'',page_statues?'move':'']}}">
+            <image class="top-img data-v-b692cb06" mode="widthFix" src="{{images.top}}" style="height:auto;"></image>
+            <image class="{{['banner-area data-v-b692cb06',start_statues[0]?'hidden':'',scroll_statues?'show':'']}}" mode="widthFix" src="{{images.area_bg}}" style="height:auto;"></image>
+            <view class="{{['start-box data-v-b692cb06',start_statues[0]?'hidden':'',start_statues[1]?'none':'']}}">
+                <view class="start-top data-v-b692cb06">
+                    <image class="card-show data-v-b692cb06" mode="widthFix" src="{{images.back_bg}}" style="height:auto;"></image>
+                </view>
+                <view class="start-show data-v-b692cb06">
+                    <image class="show-star data-v-b692cb06" mode="widthFix" src="{{images.show_star}}" style="height:auto;"></image>
+                    <view class="btn-box data-v-b692cb06">
+                        <button bindgetuserinfo="__e" class="getuser data-v-b692cb06" data-event-opts="{{[ [ 'getuserinfo',[ [ 'getuserinfo',['$event'] ] ] ] ]}}" openType="getUserInfo" withCredentials="“true”" wx:if="{{!can_get_user}}"></button>
+                        <image bindtap="__e" class="start-arc data-v-b692cb06" data-event-opts="{{[ [ 'tap',[ [ 'canvas_animation',['$event'] ] ] ] ]}}" mode="widthFix" src="{{images.start_arc}}" style="height:auto;"></image>
+                        <image bindtap="__e" class="start-btn data-v-b692cb06" data-event-opts="{{[ [ 'tap',[ [ 'canvas_animation',['$event'] ] ] ] ]}}" mode="widthFix" src="{{images.start_btn}}" style="height:auto;"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="animaiton-box data-v-b692cb06" wx:if="{{start_statues[2]}}">
+                <canvas canvasId="animationCanvas" class="canvas-item data-v-b692cb06"></canvas>
+            </view>
+            <view animation="{{animation_start}}" class="{{['canvas-card data-v-b692cb06',canvas_move?'show':'']}}">
+                <image class="canvas-image data-v-b692cb06" mode="widthFix" src="{{images.back}}" style="height:auto;"></image>
+            </view>
+            <view class="{{['choice-box data-v-b692cb06',scroll_statues?'block':'',class_show[2]?'hidden':'']}}">
+                <block wx:if="{{choice_tip_statues}}">
+                    <view class="guide-box data-v-b692cb06">凭你的第一感觉选<text class="data-v-b692cb06">1张</text>你想要的牌</view>
+                    <view class="tip-box data-v-b692cb06">
+                        <text class="tip-number data-v-b692cb06">第<text class="data-v-b692cb06">{{number}}</text>张</text>
+                        <text class="arrow data-v-b692cb06"></text>
+                    </view>
+                </block>
+                <view class="scroll-box data-v-b692cb06 vue-ref" data-ref="scroll-box">
+                    <scroll-view bindchange="__e" bindscroll="__e" class="{{['scroll-view data-v-b692cb06',class_show[3]?'show':'']}}" data-event-opts="{{[ [ 'change',[ [ 'change',['$event'] ] ] ],[ 'scroll',[ [ 'scroll',['$event'] ] ] ] ]}}" scrollX="true">
+                        <view class="white-space data-v-b692cb06"></view>
+                        <block wx:for="{{card_statues}}" wx:for-index="i" wx:key="i">
+                            <view bindtap="__e" class="card-item data-v-b692cb06" data-event-opts="{{[ [ 'tap',[ [ 'choice',['$event'] ] ] ] ]}}" data-index="{{i}}" style="{{'z-index:'+200-i+';'}}" wx:if="{{card_statues[i]==1}}">
+                                <image class="img-bg data-v-b692cb06" mode="widthFix" src="{{images.back}}" style="height:auto;"></image>
+                            </view>
+                            <block wx:else>
+                                <view class="choice data-v-b692cb06" style="{{'z-index:'+200-i+';'}}" wx:if="{{card_statues[i]==0}}">
+                                    <image class="img-bg data-v-b692cb06" mode="widthFix" src="{{images.back}}" style="height:auto;"></image>
+                                </view>
+                                <view bindtap="__e" class="card-item data-v-b692cb06" data-event-opts="{{[ [ 'tap',[ [ 'choice',['$event'] ] ] ] ]}}" data-index="{{i}}" style="{{'z-index:'+200-i+';'}}" wx:else>
+                                    <image class="img-bg data-v-b692cb06" mode="widthFix" src="{{images.back}}" style="height:auto;"></image>
+                                </view>
+                            </block>
+                        </block>
+                        <view class="white-end data-v-b692cb06"></view>
+                    </scroll-view>
+                </view>
+            </view>
+            <view animation="{{animationData}}" class="{{['choice-card data-v-b692cb06',class_show[1]?'show':'']}}" style="{{'left:'+moveStart.x+';'+'top:'+moveStart.y+';'}}">
+                <view animation="{{animation_img}}" class="img-box data-v-b692cb06">
+                    <image class="{{['card-front data-v-b692cb06',card_positive?'positive':'']}}" mode="widthFix" src="{{card_image}}" style="height:auto;"></image>
+                    <image class="card-back data-v-b692cb06" mode="widthFix" src="{{images.back}}" style="height:auto;"></image>
+                </view>
+            </view>
+            <view class="{{['explain-tip data-v-b692cb06',class_show[2]?'show':'']}}">
+                <view class="card-explain data-v-b692cb06" style="{{'color:'+canvas_data.explain_color+';'}}">{{'你抽中的塔罗牌是：'+card_name+'·'+(card_positive==1?'正位':'逆位')}}</view>
+                <image bindtap="__e" class="video-btn data-v-b692cb06" data-event-opts="{{[ [ 'tap',[ [ 'video',['$event'] ] ] ] ]}}" mode="widthFix" src="{{images.video}}" style="height:auto;" wx:if="{{has_video}}"></image>
+            </view>
+        </view>
+        <view class="finger-show data-v-b692cb06" wx:if="{{finger_statues}}">
+            <text class="finger-title data-v-b692cb06">向左滑动选牌</text>
+            <view class="finger-tip data-v-b692cb06">
+                <image class="{{['finger-img data-v-b692cb06',finger_img]}}" src="{{images.finger}}"></image>
+            </view>
+        </view>
+        <view class="save-img data-v-b692cb06" style="{{'background-image:'+'url('+images.save_bg+')'+';'}}" wx:if="{{save_statues}}">
+            <image class="{{['save-animation data-v-b692cb06',save_img]}}" mode="widthFix" src="{{images.save}}" style="height:auto;"></image>
+        </view>
+        <result bind:__l="__l" bind:save="__e" class="data-v-b692cb06 vue-ref" data-event-opts="{{[ [ '^save',[ ['save'] ] ] ]}}" data-ref="result" info="{{canvas_data}}" vueId="1"></result>
+        <canvas canvasId="share" class="data-v-b692cb06" style="{{'width:'+canvas_data.attr.width+'px'+';'+'height:'+canvas_data.attr.height+'px'+';'+'position:'+fixed+';'+'top:'+9999+'px'+';'}}"></canvas>
+        <nav-bar bind:__l="__l" class="data-v-b692cb06" title="{{canvas_data.attr.title}}" transparentFixedFontColor="#FFF" type="transparentFixed" vueId="2"></nav-bar>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+<view class="xb_conversation_item data-v-7c1f000d">
+    <view class="xb_conv_wrap_left data-v-7c1f000d">
+        <image class="xb_avatar_left _img data-v-7c1f000d" src="https://ssl-tanme.cdn.itwlw.com/common/img/tanme.jpg"></image>
+        <view class="xb_box data-v-7c1f000d">
+            <view class="xb_tri_left data-v-7c1f000d"></view>
+        </view>
+        <view class="xb_conv_left   data-v-7c1f000d">
+            <image class="m-img data-v-7c1f000d" mode="scaleToFill" src="{{m_img}}"></image>
+        </view>
+    </view>
+</view>

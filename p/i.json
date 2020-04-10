@@ -1,0 +1,14 @@
+{
+    "navigationBarTitleText": "趣测",
+    "usingComponents": {
+        "search-box": "/components/SearchBox",
+        "swiper-box": "/components/SwiperBox",
+        "grid-box": "/components/GridBox",
+        "list-box": "/components/ListBox",
+        "load-box": "/components/LoadBox",
+        "popup-box": "/components/PopupBox",
+        "navgation-box": "/components/NavgationBox",
+        "poptest-box": "/components/PoptestBox",
+        "select-star-box": "/components/SelectStar"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "msg": "/pages/tanmegame/message",
+        "umsg": "/components/tanme/usermsg",
+        "msgimg": "/components/tanme/msgimg",
+        "userimg-box": "/components/tanme/userimg",
+        "resimg": "/components/tanme/resultimg",
+        "image-cropper": "/components/invinbg-image-cropper/invinbg-image-cropper"
+    }
+}

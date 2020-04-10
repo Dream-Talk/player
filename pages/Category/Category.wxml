@@ -1,0 +1,75 @@
+<view catchtouchmove="__e" class="container data-v-b9462a96" data-event-opts="{{[ [ 'touchmove',[ [ 'touchmove',['$event'] ] ] ] ]}}" style="{{listshow?'':'padding-bottom:0px'}}">
+    <view class="searchBox data-v-b9462a96">
+        <search-box bind:__l="__l" class="data-v-b9462a96" vueId="1"></search-box>
+    </view>
+    <view class="nav data-v-b9462a96">
+        <view class="nav-left data-v-b9462a96" style="height:100%;">
+            <scroll-view scrollY class="data-v-b9462a96" style="{{'min-height:100%'}}">
+                <view bindtap="__e" class="{{['nav-left-item data-v-b9462a96',index==num?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'switchTab',['$0',index],[ [ ['categories','',index] ] ] ] ] ] ]}}" wx:for="{{categories}}" wx:key="index">
+                    <block wx:if="{{item.id!=16}}">{{''+item.title+''}}</block>
+                    <image class="nav-left-item-icon data-v-b9462a96" mode="widthFix" src="http://uploads-admin.cdn.woquhudong.cn/quce/1577177355jCe1t.png" wx:else></image>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="nav-right data-v-b9462a96" style="height:100%;">
+            <view class="nav-right-item data-v-b9462a96" style="height:100%;">
+                <view class="list-top data-v-b9462a96">
+                    <view class="navbar data-v-b9462a96">
+                        <view class="title data-v-b9462a96">排序</view>
+                        <view bindtap="__e" class="{{['action data-v-b9462a96',isActive?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'openOrder',['$event'] ] ] ] ]}}">
+                            <text class="text data-v-b9462a96">{{order=='view'?'按热度':'按时间'}}</text>
+                            <image class="icon data-v-b9462a96" mode="widthFix" src="{{downIcon}}"></image>
+                        </view>
+                    </view>
+                    <view class="{{['down-content data-v-b9462a96',isActive?'open':'']}}">
+                        <view bindtap="__e" class="{{['item data-v-b9462a96',order=='view'?'selected':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changeOrder',['$event'] ] ] ] ]}}">
+                            <text class="text data-v-b9462a96">按热度</text>
+                            <image class="icon data-v-b9462a96" mode="widthFix" src="{{selectIcon}}"></image>
+                        </view>
+                        <view bindtap="__e" class="{{['item data-v-b9462a96',order=='time'?'selected':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changeOrder',['$event'] ] ] ] ]}}">
+                            <text class="text data-v-b9462a96">按时间</text>
+                            <image class="icon data-v-b9462a96" mode="widthFix" src="{{selectIcon}}"></image>
+                        </view>
+                    </view>
+                </view>
+                <scroll-view scrollWithAnimation scrollY bindscrolltolower="__e" class="data-v-b9462a96" data-event-opts="{{[ [ 'scrolltolower',[ ['getPagedata'] ] ] ]}}" style="{{'height:calc(100% - 43px);background-size:100%;background-repeat:no-repeat;'+(cid==16&&'background-image: url(http://uploads-admin.cdn.woquhudong.cn/quce/1577178107sAkJ5.png);padding-top:111rpx')}}">
+                    <view class="list-box data-v-b9462a96" wx:if="{{cid!=16}}">
+                        <view bindtap="__e" class="list-item data-v-b9462a96" data-event-opts="{{[ [ 'tap',[ [ 'toQuestion',['$0',i],[ [ ['container','',i] ] ] ] ] ] ]}}" wx:for="{{container}}" wx:for-index="i" wx:key="i">
+                            <view class="item-detail data-v-b9462a96">
+                                <text class="title data-v-b9462a96">{{item.title}}</text>
+                                <text class="desc data-v-b9462a96">{{item.desc}}</text>
+                                <view class="space data-v-b9462a96"></view>
+                                <view class="line data-v-b9462a96">
+                                    <text class="view data-v-b9462a96">{{item.view+'万人在测'}}</text>
+                                </view>
+                            </view>
+                            <image class="item-picture data-v-b9462a96" mode="widthFix" src="{{item.img}}"></image>
+                        </view>
+                    </view>
+                    <view class="alienation data-v-b9462a96" wx:else>
+                        <view bindtap="__e" class="list-item data-v-b9462a96" data-event-opts="{{[ [ 'tap',[ [ 'toQuestion',['$0',i],[ [ ['container','',i] ] ] ] ] ] ]}}" wx:for="{{container}}" wx:for-index="i" wx:key="i">
+                            <view class="title data-v-b9462a96">
+                                <view class="data-v-b9462a96">{{''+item.title+''}}</view>
+                                <image class="title-picture data-v-b9462a96" mode="widthFix" src="http://uploads-admin.cdn.woquhudong.cn/quce/1577179107Al55L.png"></image>
+                            </view>
+                            <view class="item-bottom data-v-b9462a96">
+                                <image class="item-picture data-v-b9462a96" mode="widthFix" src="{{item.img}}"></image>
+                                <view class="item-detail data-v-b9462a96">
+                                    <text class="desc data-v-b9462a96">{{item.desc}}</text>
+                                    <view class="line data-v-b9462a96">
+                                        <text class="view data-v-b9462a96">{{item.view+'万人在测'}}</text>
+                                        <image mode class="line_icon data-v-b9462a96" src="http://uploads-admin.cdn.woquhudong.cn/quce/1577180522zpHC1.png"></image>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="loading data-v-b9462a96" style="{{cid==16&&'color:#fff'}}" wx:if="{{!load}}">
+                        <image class="icon data-v-b9462a96" mode="widthFix" src="{{waitIcon}}"></image>加载中...</view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+    <navgation-box bind:__l="__l" class="data-v-b9462a96" navdata="{{navData}}" page="{{navnum}}" vueId="2" wx:if="{{listshow}}"></navgation-box>
+    <select-star-box bind:__l="__l" class="data-v-b9462a96" vueId="3" wx:if="{{selectstar}}"></select-star-box>
+</view>

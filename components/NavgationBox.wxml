@@ -1,0 +1,17 @@
+<view class="navgation-box data-v-203e0491">
+    <view class="nav-content data-v-203e0491">
+        <view catchtap="__e" class="nav-item data-v-203e0491" data-event-opts="{{[ [ 'tap',[ [ 'switchPage',['$0',i],[ [ ['navdata','',i] ] ] ] ] ] ]}}" wx:for="{{navdata}}" wx:for-index="i">
+            <view class="origin data-v-203e0491" wx:if="{{item.resdot}}"></view>
+            <image class="nav-picture data-v-203e0491" mode="widthFix" src="{{'https://ssl-uploads-admin.cdn.itwlw.com/'+(page==i||page==10&&i==0?item.icon_select:item.icon_unselect)}}"></image>
+            <text class="nav-name data-v-203e0491">{{item.desc}}</text>
+        </view>
+    </view>
+    <view class="adbox data-v-203e0491" wx:if="{{show}}">
+        <view class="adIcon_box data-v-203e0491">
+            <view bindtap="__e" class="cha data-v-203e0491" data-event-opts="{{[ [ 'tap',[ [ 'clickcancel',['$event'] ] ] ] ]}}"></view>
+            <view class="data-v-203e0491">
+                <image bindtap="__e" class="item-picture data-v-203e0491" data-event-opts="{{[ [ 'tap',[ [ 'jumpother',['$0'],[ [ ['recommendP','',i] ] ] ] ] ] ]}}" src="{{'https://ssl-uploads-admin.cdn.itwlw.com/'+item.img}}" wx:for="{{recommendP}}" wx:for-index="i" wx:key="i"></image>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+<view class="xb_conversation_item data-v-be12ff2c">
+    <view class="xb_conv_wrap_right data-v-be12ff2c">
+        <image class="xb_avatar_right _img data-v-be12ff2c" src="{{userurl}}"></image>
+        <view class="xb_box data-v-be12ff2c">
+            <view class="xb_tri_right data-v-be12ff2c"></view>
+        </view>
+        <view class="xb_conv_right data-v-be12ff2c">
+            <image class="u_img data-v-be12ff2c" mode="aspectFill" src="{{u_img}}"></image>
+        </view>
+    </view>
+</view>

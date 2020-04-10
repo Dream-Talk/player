@@ -1,0 +1,46 @@
+<view class="content data-v-000271f2">
+    <image class="christmas_icon data-v-000271f2" mode="widthFix" src="../../static/christmas_icon.png"></image>
+    <view class="shapeselect data-v-000271f2" style="{{'background-image:url(https://ssl-uploads-admin.cdn.itwlw.com/quce/'+(sideness?'1576897150SrCmG':'1576897180ID9eq')+'.png)'}}" wx:if="{{showimg}}">
+        <view bindtap="__e" class="data-v-000271f2" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}"></view>
+        <view bindtap="__e" class="data-v-000271f2" data-event-opts="{{[ [ 'tap',[ [ 'e1',['$event'] ] ] ] ]}}"></view>
+    </view>
+    <view class="login data-v-000271f2" wx:if="{{!showimg&&needlogin}}">
+        <view class="logintext data-v-000271f2">点击【授权登陆】使用你的 微信头像</view>
+        <button bindgetuserinfo="__e" class="loginbtn data-v-000271f2" data-event-opts="{{[ [ 'getuserinfo',[ [ 'getUserInfo',['$event'] ] ] ] ]}}" openType="getUserInfo">
+            <image class="data-v-000271f2" mode="widthFix" src="../../static/getuserinfo.png"></image>
+        </button>
+    </view>
+    <view bindtouchstart="__e" catchtouchmove="__e" class="actionbox data-v-000271f2" data-event-opts="{{[ [ 'touchstart',[ [ 'start',['$event'] ] ] ],[ 'touchmove',[ [ 'bgmove',['$event'] ] ] ] ]}}" wx:if="{{showimg}}">
+        <view class="action data-v-000271f2">
+            <image class="showimg data-v-000271f2" mode="widthFix" src="{{showimg}}" style="{{'border-radius:'+(sideness?'10rpx':'50%')+' ;'}}"></image>
+            <view class="touchWrap data-v-000271f2" style="{{'transform: scale('+item.scale+');top:'+item.top+'px;left:'+item.left+'px; '}}" wx:for="{{itemList}}" wx:for-index="i" wx:key="i">
+                <view class="{{[ 'data-v-000271f2','imgWrap '+(item.active?'touchActive':'') ]}}" style="{{'transform: rotate('+item.angle+'deg); border: '+(item.active?4*item.oScale:0)+'rpx #fff dashed;'}}">
+                    <image bindtouchstart="__e" catchtouchmove="__e" class="data-v-000271f2" data-event-opts="{{[ [ 'touchstart',[ [ 'WraptouchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'WraptouchMove',['$event'] ] ] ] ]}}" data-id="{{item.id}}" src="{{item.image}}" style="{{'width:'+item.width+'px;height:'+item.height+'px;'}}"></image>
+                    <image bindtap="__e" class="x data-v-000271f2" data-event-opts="{{[ [ 'tap',[ [ 'deleteItem',['$event'] ] ] ] ]}}" data-id="{{item.id}}" src="../../static/x.png" style="{{'transform: scale('+item.oScale+');transform-origin:center;'}}"></image>
+                    <image bindtouchstart="__e" catchtouchmove="__e" class="o data-v-000271f2" data-event-opts="{{[ [ 'touchstart',[ [ 'oTouchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'oTouchMove',['$event'] ] ] ] ]}}" data-id="{{item.id}}" src="../../static/o.png" style="{{'transform: scale('+item.oScale+');transform-origin:center;'}}"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="caplistBox data-v-000271f2">
+        <view class="caplisttop data-v-000271f2"></view>
+        <view bindtouchmove="__e" class="caplistcontent data-v-000271f2" data-event-opts="{{[ [ 'touchmove',[ [ 'movelist',['$event'] ] ] ] ]}}">
+            <view class="data-v-000271f2" style="{{'height: 100%;width:'+185*hatlistlength+'rpx'}}">
+                <view bindtap="__e" class="hat data-v-000271f2" data-event-opts="{{[ [ 'tap',[ [ 'changhat',['$0',i],[ [ ['hatlist','',i] ] ] ] ] ] ]}}" wx:for="{{hatlist}}" wx:for-index="i" wx:key="i">
+                    <view class="locktop data-v-000271f2" wx:if="{{item.lock}}">
+                        <image mode class="lockicon data-v-000271f2" src="../../static/lockicon.png"></image>
+                    </view>
+                    <image mode class="hatimg data-v-000271f2" src="{{'https://ssl-uploads-admin.cdn.itwlw.com/'+item.path}}"></image>
+                </view>
+            </view>
+        </view>
+        <view class="caplistbottom data-v-000271f2"></view>
+    </view>
+    <view class="btnBox data-v-000271f2">
+        <image bindtap="__e" class="data-v-000271f2" data-event-opts="{{[ [ 'tap',[ [ 'selectHideImg',['$event'] ] ] ] ]}}" mode="widthFix" src="../../static/selecthide.png"></image>
+        <image bindtap="__e" class="data-v-000271f2" data-event-opts="{{[ [ 'tap',[ [ 'previewImg',['$event'] ] ] ] ]}}" mode="widthFix" src="../../static/preview.png"></image>
+    </view>
+    <canvas canvasId="header" class="canvas data-v-000271f2"></canvas>
+    <canvas canvasId="headersmall" class="canvassmall data-v-000271f2"></canvas>
+    <image-cropper bind:__l="__l" bind:cancel="__e" bind:confirm="__e" class="data-v-000271f2" cropFixed="{{true}}" cropHeight="300" cropWidth="300" data-event-opts="{{[ [ '^confirm',[ ['confirm'] ] ],[ '^cancel',[ ['cancel'] ] ] ]}}" src="{{tempFilePath}}" vueId="1"></image-cropper>
+</view>

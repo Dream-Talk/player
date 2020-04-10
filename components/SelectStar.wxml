@@ -1,0 +1,17 @@
+<view class="bindbox data-v-ade49e5a">
+    <view class="bind_starbox data-v-ade49e5a">
+        <view class="bindheader data-v-ade49e5a">
+            <image class="bindbg _img data-v-ade49e5a" src="{{bindbg}}"></image>
+            <image bindtap="__e" class="bindclose _img data-v-ade49e5a" data-event-opts="{{[ [ 'tap',[ ['closeBindBox'] ] ] ]}}" src="{{bindclose}}"></image>
+            <view class="bindtitle data-v-ade49e5a">选择你的星座</view>
+            <view class="binddesc data-v-ade49e5a">点击下方星座，即可直接选择！</view>
+        </view>
+        <view class="bindstarlist data-v-ade49e5a">
+            <view bindtap="__e" class="staritem data-v-ade49e5a" data-event-opts="{{[ [ 'tap',[ [ 'bindStar',['$0'],[ [ ['starsArr','',i,'__$n0'] ] ] ] ] ] ]}}" wx:for="{{starsArr}}" wx:for-index="i" wx:key="i">
+                <image class="bindstaricon _img data-v-ade49e5a" src="{{'http://const.cdn.xingzuozhuanjia.com/Constell/card/img/star/'+item[0]+'.png?v=6.75'}}"></image>
+                <view class="bindstarname data-v-ade49e5a">{{item[1]}}</view>
+                <view class="bindstardate data-v-ade49e5a">{{item[2]}}</view>
+            </view>
+        </view>
+    </view>
+</view>

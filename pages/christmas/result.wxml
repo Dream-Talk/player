@@ -1,0 +1,31 @@
+<view class="content data-v-50a506af">
+    <view class="actionbox data-v-50a506af">
+        <view class="action data-v-50a506af" style="{{'border-radius:'+(sideness=='true'?'10rpx':'50%')+' ;'}}">
+            <image class="showimg data-v-50a506af" mode="widthFix" src="{{showimg}}"></image>
+        </view>
+    </view>
+    <view class="newHideimg data-v-50a506af">
+        <image bindtap="__e" class="data-v-50a506af" data-event-opts="{{[ [ 'tap',[ [ 'setheaderimg',['$event'] ] ] ] ]}}" mode="widthFix" src="../../static/setnewimg.png"></image>
+    </view>
+    <view class="btnBox data-v-50a506af">
+        <image bindtap="__e" class="save data-v-50a506af" data-event-opts="{{[ [ 'tap',[ ['saveimg'] ] ] ]}}" mode="widthFix" src="../../static/saveicon.png"></image>
+        <button class="share data-v-50a506af" openType="share">
+            <image class="data-v-50a506af" mode="widthFix" src="../../static/inviteicon.png"></image>
+        </button>
+    </view>
+    <view class="model data-v-50a506af" wx:if="{{showmodel}}">
+        <view class="modelbg data-v-50a506af">
+            <view class="modeltext data-v-50a506af">
+                <block wx:if="{{modeltype=='video'}}">
+                    <view class="data-v-50a506af" wx:for="{{savefiltext}}" wx:for-index="i" wx:key="i">{{''+item+''}}</view>
+                </block>
+                <block wx:else>
+                    <view class="data-v-50a506af" wx:for="{{setsucesstext}}" wx:for-index="i" wx:key="i">{{''+item+''}}</view>
+                </block>
+            </view>
+            <image bindtap="__e" class="watchvideo data-v-50a506af" data-event-opts="{{[ [ 'tap',[ [ 'continuetype',['$event'] ] ] ] ]}}" mode="widthFix" src="{{modeltype=='video'?'../../static/watchvideo.png':'../../static/shareqzonebtn.png'}}"></image>
+            <image mode bindtap="__e" class="closemodel data-v-50a506af" data-event-opts="{{[ [ 'tap',[ [ 'closemodel',['$event'] ] ] ] ]}}" src="../../static/closemodel.png"></image>
+        </view>
+    </view>
+    <canvas canvasId="shareqzone" class="canvas data-v-50a506af"></canvas>
+</view>

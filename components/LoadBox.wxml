@@ -1,0 +1,10 @@
+<view class="{{['loading data-v-168808a5',isActive?'active':'']}}">
+    <view class="spinner data-v-168808a5">
+        <view class="rect rect1 data-v-168808a5"></view>
+        <view class="rect rect2 data-v-168808a5"></view>
+        <view class="rect rect3 data-v-168808a5"></view>
+        <view class="rect rect4 data-v-168808a5"></view>
+        <view class="rect rect5 data-v-168808a5"></view>
+    </view>
+    <view class="text data-v-168808a5">加载中</view>
+</view>

@@ -1,0 +1,17 @@
+<view class="popupBox data-v-49cdcde7">
+    <view class="scan-box _div data-v-49cdcde7">
+        <view class="content _div data-v-49cdcde7">
+            <view class="cover scale _div data-v-49cdcde7">
+                <image bindtap="__e" class="close-img data-v-49cdcde7" data-event-opts="{{[ [ 'tap',[ ['closePopup'] ] ] ]}}" src="{{closeIcon}}"></image>
+                <image class="top-img data-v-49cdcde7" src="{{topImg}}"></image>
+                <label class="tips _span data-v-49cdcde7">猜你喜欢</label>
+                <label class="title _span data-v-49cdcde7">{{indeximgs.title}}</label>
+                <view class="picture-box _div data-v-49cdcde7">
+                    <image class="data-v-49cdcde7" src="{{indeximgs.img}}"></image>
+                </view>
+                <view bindtap="__e" class="view data-v-49cdcde7" data-event-opts="{{[ [ 'tap',[ [ 'toQuestion',['$0'],['indeximgs.id'] ] ] ] ]}}">立即开始测试<image class="_img data-v-49cdcde7" mode="widthFix" src="http://quce.cdn.woquhudong.cn//Vue/Index/image/common/arrow_w.png?v=1.1"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,14 @@
+<view class="container data-v-2f560bfe">
+    <view class="search-box data-v-2f560bfe">
+        <view class="search-group data-v-2f560bfe">
+            <input bindconfirm="__e" bindinput="__e" class="search-input data-v-2f560bfe" data-event-opts="{{[ [ 'confirm',[ [ 'search',['$event'] ] ] ],[ 'input',[ [ '__set_model',[ '','keyword','$event',[] ] ] ] ] ]}}" placeholder="请输入测试名称或关键字" type="text" value="{{keyword}}"></input>
+            <view bindtap="__e" class="search-icon data-v-2f560bfe" data-event-opts="{{[ [ 'tap',[ [ 'search',['$event'] ] ] ] ]}}">
+                <image class="data-v-2f560bfe" mode="widthFix" src="{{searchIcon}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="wrap data-v-2f560bfe">
+        <view class="tips data-v-2f560bfe">{{tips}}</view>
+        <list-box bind:__l="__l" class="data-v-2f560bfe" list="{{search_list}}" vueId="1"></list-box>
+    </view>
+</view>

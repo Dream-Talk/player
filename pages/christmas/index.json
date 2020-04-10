@@ -1,0 +1,8 @@
+{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#40445b",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "image-cropper": "/components/invinbg-image-cropper/invinbg-image-cropper"
+    }
+}
