@@ -1,0 +1,46 @@
+<view wx:if="{{ad.type&&!isHideKaiping}}">
+    <view bindtap="hideKaiping" class="kaipingCover" style="position:fixed;top:0;left:0;width:750rpx;height:100vh;background-color:rgba(0,0,0,0.6);z-index: 96;" wx:if="{{type=='kaiping'&&ad.type!='interstitialAd'}}"></view>
+    <view class="{{type}}">
+        <view bindtap="tiaozhuan" class="preview" data-preview="{{ad.preview}}" wx:if="{{ad.type=='preview'}}">
+            <view wx:if="{{ad.text}}">{{ad.text}}</view>
+            <image lazyLoad="{{true}}" src="{{ad.pic.url}}" style="width:{{adWidth}}rpx;height:{{adHeight}}rpx" wx:else></image>
+        </view>
+        <view bindtap="clickAd" class="wxAd" style="width: 750rpx;background-color: {{ad.backgroundColor||''}}" wx:elif="{{ad.type=='wx-ad'}}">
+            <ad adHeight="{{ad.adHeight/750*windowWidth||100}}" adLeft="{{ad.adLeft/750*windowWidth||0}}" adTheme="{{ad.adTheme||'white'}}" adTop="{{ad.adTop/750*windowWidth||0}}" adType="{{ad.adType||'banner'}}" adWidth="{{ad.adWidth/750*windowWidth||windowWidth}}" type="{{ad.adType||'banner'}}" unitId="{{ad['unit-id']}}"></ad>
+        </view>
+        <navigator appId="{{ad.appid?ad.appid:''}}" bindtap="clickAd" class="tap" hoverClass="none" path="{{ad.path?ad.path:''}}" target="miniProgram" wx:elif="{{ad.type=='tap'}}">
+            <button wx:if="{{ad.text}}">{{ad.text}}</button>
+            <image lazyLoad="{{true}}" src="{{ad.pic.url}}" style="width:{{adWidth}}rpx;height:{{adHeight}}rpx" wx:elif="{{ad.pic}}"></image>
+            <slot wx:else></slot>
+        </navigator>
+        <view bindtap="clickAd" class="link" wx:elif="{{ad.type=='link'}}">
+            <navigator hoverClass="none" openType="switchTab" url="{{ad.path}}" wx:if="{{ad.isTab}}">
+                <view wx:if="{{ad.text}}">{{ad.text}}</view>
+                <image lazyLoad="{{true}}" src="{{ad.pic.url}}" style="width:{{adWidth}}rpx;height:{{adHeight}}rpx" wx:else></image>
+            </navigator>
+            <navigator hoverClass="none" openType="redirect" url="{{ad.path}}" wx:else>
+                <view wx:if="{{ad.text}}">{{ad.text}}</view>
+                <image lazyLoad="{{true}}" src="{{ad.pic.url}}" style="width:{{adWidth}}rpx;height:{{adHeight}}rpx" wx:else></image>
+            </navigator>
+        </view>
+        <view bindtap="navigateToWebview" class="webview" data-path="{{ad.path}}" wx:elif="{{ad.type=='webview'}}">
+            <button wx:if="{{ad.text}}">{{ad.text}}</button>
+            <image lazyLoad="{{true}}" src="{{ad.pic.url}}" style="width:{{adWidth}}rpx;height:{{adHeight}}rpx" wx:else></image>
+        </view>
+        <view bindtap="openContact" class="contact" wx:elif="{{ad.type=='contact'}}">
+            <button wx:if="{{ad.text}}">{{ad.text}}</button>
+            <image lazyLoad="{{true}}" src="{{ad.pic.url}}" style="width:{{adWidth}}rpx;height:{{adHeight}}rpx" wx:else></image>
+        </view>
+        <button class="openGroupProfile" groupId="{{ad.groupId}}" openType="openGroupProfile" wx:elif="{{ad.type=='opengroup'}}">
+            <view wx:if="{{ad.text}}">{{ad.text}}</view>
+            <image lazyLoad="{{true}}" src="{{ad.pic.url}}" style="width:{{adWidth}}rpx;height:{{adHeight}}rpx" wx:else></image>
+        </button>
+        <view bindtap="openAppBox" wx:elif="{{ad.type=='appbox'&&isShowAppBox}}">
+            <view wx:if="{{ad.text}}">{{ad.text}}</view>
+            <image lazyLoad="{{true}}" src="{{ad.pic.url}}" style="width:{{adWidth}}rpx;height:{{adHeight}}rpx" wx:else></image>
+        </view>
+        <view bindtap="hideKaiping" style="position:absolute;right:-35rpx;top:-35rpx;" wx:if="{{type=='kaiping'&&ad.type!='interstitialAd'}}">
+            <image lazyLoad="{{true}}" src="https://youtupics.maiyizhi.cn/guanbi3.png" style="width:70rpx;height:70rpx;"></image>
+        </view>
+    </view>
+</view>

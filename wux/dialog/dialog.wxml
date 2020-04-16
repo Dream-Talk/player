@@ -1,0 +1,22 @@
+<template name="dialog">
+    <view class="weui-mask {{animateCss}}" wx:if="{{visible}}"></view>
+    <view class="weui-dialog {{animateCss}}" style="overflow: visible;" wx:if="{{visible}}">
+        <view class="weui-dialog__hd" wx:if="{{title}}">
+            <view class="weui-dialog__title">{{title}}</view>
+        </view>
+        <view class="weui-dialog__bd" wx:if="{{content}}">
+            <view class="weui-dialog__content">{{content}}</view>
+            <input bindinput="{{bindinput}}" class="weui-input weui-prompt-input" maxlength="{{maxlength}}" password="{{prompt.password}}" placeholder="{{prompt.placeholder}}" type="{{prompt.fieldtype}}" value="{{prompt.response}}" wx:if="{{prompt}}"></input>
+        </view>
+        <view class="weui-dialog__ft {{verticalButtons?'weui-dialog__btns_vertical':''}}" wx:if="{{!getUserInfo}}">
+            <view bindtap="{{buttonTapped}}" class="weui-dialog__btn weui-dialog__btn_default {{item.type}} {{item.bold?'weui-dialog__btn_bold':''}}" data-index="{{index}}" wx:for="{{buttons}}">{{item.text}}</view>
+        </view>
+        <view class="weui-dialog__ft {{verticalButtons?'weui-dialog__btns_vertical':''}}" wx:if="{{getUserInfo}}">
+            <button bindtap="{{buttonTapped}}" class="weui-dialog__btn weui-dialog__btn_default" data-index="0">否</button>
+            <button bindgetuserinfo="{{buttonTapped}}" class="weui-dialog__btn weui-dialog__btn_default weui-dialog__btn_primary" data-index="1" openType="getUserInfo">是</button>
+        </view>
+        <view bindtap="{{hide}}" style="position:absolute;right:0;top:0;">
+            <image lazyLoad="{{true}}" src="/styles/fork.png" style="width: 48rpx;height:48rpx;margin: 20rpx;margin-top: 10rpx;"></image>
+        </view>
+    </view>
+</template>

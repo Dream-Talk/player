@@ -1,0 +1,7 @@
+<template name="empty">
+    <view class="flex_center" style="height:1000rpx;">
+        <view class="weui-msg__icon-area" style="">
+            <image lazyload="true" src="https://youtupics.maiyizhi.cn/nocontent_list.png" style="width: 588rpx;height:269rpx;"></image>
+        </view>
+    </view>
+</template>

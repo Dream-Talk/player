@@ -1,0 +1,39 @@
+<view class="container" wx:if="{{!isLoading}}">
+    <block wx:if="{{list.length>0}}">
+        <view style="background-color: #fff;">
+            <block wx:for="{{list}}" wx:key="{{index}}">
+                <view bindtap="viewDetail" class="flex_col_center" data-index="{{index}}" style="padding: 20rpx 30rpx;border-bottom: 1px solid #f2f2f2;" wx:if="{{item.data&&item.data.length||item.selfData&&item.selfData.length}}">
+                    <view>
+                        <image lazyLoad="{{true}}" mode="aspectFill" src="{{item.template.avatar.url}}{{avatarSize}}" style="display: block;width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;" wx:if="{{item.template.avatar.url}}"></image>
+                        <view style="width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;background-color: #7f7f7f;" wx:else></view>
+                    </view>
+                    <view style="flex: 1;">
+                        <view class="name">{{item.template.name}}</view>
+                        <view class="star" wx:if="{{item.data.length}}">{{item.data.length}}个朋友测过</view>
+                        <view class="star" wx:else>还没有朋友测过</view>
+                    </view>
+                    <image src="/styles/next.png" style="width: 32rpx;height: 32rpx;"></image>
+                </view>
+                <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="mine" type="ad" width="750" wx:if="{{list.length>4&&index==4}}"></ads>
+            </block>
+            <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="mine" type="ad" width="750" wx:if="{{list.length<5}}"></ads>
+        </view>
+        <view>
+            <view class="weui-loadmore" wx:if="{{hasMore}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view class="weui-loadmore weui-loadmore_line" wx:elif="{{list.length>10}}">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了...</view>
+            </view>
+        </view>
+    </block>
+    <view style="margin-top: 50rpx;text-align: center;" wx:elif="{{list.length==0}}">
+        <image lazyLoad="{{true}}" mode="widthFix" src="https://youtupics.maiyizhi.cn/upload_15650731212.png" style="width: 300rpx;"></image>
+        <view style="color: #999;font-size: 32rpx;">还没有好友参与测试哦</view>
+        <view style="margin-top: 30rpx;text-align: left;">
+            <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="mine" type="ad" width="750"></ads>
+        </view>
+    </view>
+</view>
+<tabbar activeIdx="2" auth="0" wx:if="{{!cannotUseHideTabBar}}"></tabbar>

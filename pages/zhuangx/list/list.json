@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "趣味测试",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 200,
+    "usingComponents": {
+        "login-button": "/components/loginButton/loginButton",
+        "ads": "/components/ad/ad",
+        "tabbar": "/components/tabbar/tabbar",
+        "attention": "/components/attention/attention"
+    }
+}

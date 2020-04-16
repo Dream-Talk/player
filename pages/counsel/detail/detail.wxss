@@ -1,0 +1,193 @@
+page {
+    background-color: #fff;
+}
+
+.previous {
+    padding: 0 50rpx;
+    padding-left: 0;
+    color: #c0b2e3;
+    font-size: 36rpx;
+}
+
+.box {
+    margin: 0 30rpx;
+    padding: 30rpx;
+    border-radius: 8rpx;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px 1px #e5e5e5;
+}
+
+.title {
+    font-size: 38rpx;
+    text-align: center;
+}
+
+.banner {
+    display: block;
+    width: 630rpx;
+    height: 300rpx;
+    margin: 20rpx auto;
+}
+
+.descript {
+    font-size: 28rpx;
+    color: #666;
+    line-height: 1.8;
+}
+
+.name {
+    width: 470rpx;
+    font-size: 32rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.star {
+    font-size: 24rpx;
+    color: #acacac;
+}
+
+.input {
+    width: 630rpx;
+    height: 90rpx;
+    margin: 30rpx auto;
+    border-radius: 3px;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+}
+
+.tuijian {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 750rpx;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.answer {
+    position: relative;
+    min-height: 100rpx;
+    margin: 30rpx 0;
+    padding-left: 130rpx;
+    font-size: 36rpx;
+    border-radius: 8rpx;
+    background-color: #f2f2f2;
+}
+
+.answer .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100rpx;
+    color: #fff;
+    border-radius: 8rpx 0 0 8rpx;
+    background-color: #b199e7;
+}
+
+._submit {
+    width: 630rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    margin: 30rpx 0;
+    z-index: 90;
+}
+
+.submit {
+    position: fixed;
+    left: 0;
+    bottom: 30rpx;
+    width: 750rpx;
+    height: 90rpx;
+    z-index: 1000;
+}
+
+.submit button {
+    width: 690rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #FFF;
+    background-color: #ae00ff;
+}
+
+button::after {
+    content: '';
+    border: none;
+}
+
+@-webkit-keyframes scanImage {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(630rpx);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scanImage {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(630rpx);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.scanImage {
+    animation-name: scanImage;
+    animation-duration: 1.5s;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+}
+
+.guanzhu {
+    position: fixed;
+    top: 200rpx;
+    right: 0;
+    margin: 20rpx;
+    z-index: 98;
+}
+
+.haowan {
+    position: fixed;
+    bottom: 150rpx;
+    right: 0;
+    margin: 20rpx;
+    z-index: 98;
+}
+
+.guanzhu image,.haowan image {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.kaiping {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 97;
+}
+
+.gzclassw {
+    position: fixed;
+    top: -50vh;
+}

@@ -1,0 +1,30 @@
+<view class="tabbar">
+    <view bindtap="handleItemTap" class="tabbar-item {{activeIdx===index?AppPlatform=='qq_mini'?'qq_active':'active':''}}" data-idx="{{index}}" data-path="{{item.pagePath}}" wx:if="{{_auth>=item.auth}}" wx:for="{{tabbarList}}" wx:key="{{item.pagePath}}">
+        <block wx:if="{{item.navigate}}">
+            <ads bind:openContact="guanzhu" haowan="haowan" name="{{guanggaoName}}" page="index_tab" type="haowan" wx:if="{{AppPlatform=='qq_mini'}}">
+                <view class="tabbar-item-icon">
+                    <image src="{{activeIdx===index?item.selectedIconPath:item.iconPath}}"></image>
+                </view>
+                <view class="tabbar-item-text">{{item.text}}</view>
+            </ads>
+            <navigator appId="wxab0b8413a26e53cf" hoverClass="none" target="miniProgram" wx:else>
+                <view class="tabbar-item-icon">
+                    <image class="redDot" src="{{activeIdx===index?item.selectedIconPath:item.iconPath}}"></image>
+                </view>
+                <view class="tabbar-item-text">{{item.text}}</view>
+            </navigator>
+        </block>
+        <button openType="share" style="height: 50px;background-color: transparent;" wx:elif="{{item.isShare}}">
+            <view class="tabbar-item-icon">
+                <image src="{{activeIdx===index?item.selectedIconPath:item.iconPath}}"></image>
+            </view>
+            <view class="tabbar-item-text">{{item.text}}</view>
+        </button>
+        <block wx:else>
+            <view class="tabbar-item-icon">
+                <image src="{{activeIdx===index?item.selectedIconPath:item.iconPath}}"></image>
+            </view>
+            <view class="tabbar-item-text">{{item.text}}</view>
+        </block>
+    </view>
+</view>

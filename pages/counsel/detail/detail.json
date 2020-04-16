@@ -1,0 +1,11 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "login-button": "/components/loginButton/loginButton",
+        "ads": "../../../components/ad/ad",
+        "audio": "../../../components/audio/audio",
+        "attention": "/components/attention/attention",
+        "navigator-bar": "/components/navigator/navigator",
+        "video-dialog": "/components/videodialog/dialog"
+    }
+}

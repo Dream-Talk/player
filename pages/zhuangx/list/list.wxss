@@ -1,0 +1,121 @@
+.container {
+    background: #F2F2F2!important;
+}
+
+.zan-tab__title {
+    font-size: 32rpx;
+    line-height: 80rpx;
+    height: 80rpx;
+}
+
+.zan-tab__item--selected .zan-tab__title {
+    font-size: 36rpx;
+    color: #8b51f4;
+    border-color: #8b51f4;
+}
+
+.searchbar-result {
+    margin-top: 0;
+    font-size: 14px;
+}
+
+.searchbar-result:before {
+    display: none;
+}
+
+.drawer_content {
+    height: 300rpx!important;
+}
+
+.drawer_box {
+    margin: -150rpx 50rpx 0 50rpx;
+}
+
+.name {
+    width: 470rpx;
+    font-size: 32rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.star {
+    font-size: 24rpx;
+    color: #a3a3a3;
+}
+
+.grid {
+    border-radius: 75rpx;
+    position: relative;
+    margin: 30rpx 75rpx 0 75rpx;
+    width: 100rpx;
+    height: 100rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.weui-grid__icon {
+    width: 80rpx;
+    height: 80rpx;
+    padding-top: 20rpx;
+}
+
+.weui-grid__label {
+    color: #333;
+    margin-top: 8px;
+    font-size: 10pt;
+}
+
+.weui-search-bar {
+    border: none;
+}
+
+.weui-search-bar__form {
+    border-width: 1px;
+}
+
+.weui-search-bar__input {
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.weui-search-bar__label,.weui-search-bar__cancel-btn {
+    line-height: 80rpx;
+}
+
+.weui-icon-search_in-box {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.spacing-line {
+    width: 100vw;
+    height: 20rpx;
+    background: #f2f2f2;
+}
+
+.guanzhu {
+    position: fixed;
+    top: 100rpx;
+    right: 0;
+    margin: 20rpx;
+    z-index: 98;
+}
+
+.haowan {
+    position: fixed;
+    bottom: 200rpx;
+    right: 0;
+    margin: 20rpx;
+    z-index: 98;
+}
+
+.guanzhu image,.haowan image {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.gzclassw {
+    position: fixed;
+    top: -50vh;
+}

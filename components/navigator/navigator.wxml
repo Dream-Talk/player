@@ -1,0 +1,23 @@
+<view>
+    <view style="position:fixed;left:0;top:0;width:100%;background-color:{{backgroundColor}};z-index:{{zIndex}};">
+        <view style="height:{{statusBarHeight}}px;"></view>
+        <view style="width:375rpx;height:42px;line-height:42px;margin: 0 auto;color:{{textStyle}};text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
+      {{titleText}}
+    </view>
+        <view class="flex_row" style="position:absolute;left:0;top:{{statusBarHeight}}px;width:100%;">
+            <view bindtap="reback" style="position:absolute;left:0;top:0;height:42px;margin-right:30px;text-align:center;" wx:if="{{!isFromSitemap}}">
+                <view class="flex_col_center" style="margin-top:9px;">
+                    <image src="/styles/reback.png" style="width:24px;height:24px;"></image>
+                    <view style="color: #ffffff">返回</view>
+                </view>
+            </view>
+            <navigator openType="switchTab" style="position:absolute;left:0;top:0;width:42px;height:42px;margin-right:30px;text-align:center;" url="{{url}}" wx:else>
+                <image src="/styles/home_white.png" style="width:24px;height:24px;margin-top:9px;"></image>
+            </navigator>
+            <slot></slot>
+        </view>
+    </view>
+    <view style="height:{{statusBarHeight+42}}px;padding: 0 5px;background-color:{{parentBackgroundColor}};line-height: 1;overflow-y: hidden;">
+        <text style="color: #666;font-size: 14px;">{{description}}</text>
+    </view>
+</view>

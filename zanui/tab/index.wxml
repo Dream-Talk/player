@@ -1,0 +1,38 @@
+<template name="zan-tab-list">
+    <view bindtap="_handleZanTabChange" class="zan-tab__item {{tab.selectedId==item.id?'zan-tab__item--selected':''}}" data-component-id="{{componentId}}" data-item-id="{{item.id}}" data-title="{{item.title}}" id="A_{{item.id}}" style="min-width:165rpx;" wx:for="{{tab.list}}" wx:key="id">
+        <view class="zan-tab__title" style="position:relative;">
+      {{item.title}}
+      <image src="https://youtupics.maiyizhi.cn/hot_1.png" style="width:60rpx;height:35rpx;position:absolute;top:0;" wx:if="{{item.is_hot}}"></image>
+            <image src="https://youtupics.maiyizhi.cn/new_2.gif" style="width:60rpx;height:35rpx;position:absolute;top:0;" wx:elif="{{item.is_new}}"></image>
+        </view>
+    </view>
+</template>
+<template name="zan-tab">
+    <view class="zan-tab flex_row" style="width:100%;background-color:#fff;position:{{position}}" wx:if="{{!showSelfTab}}">
+        <block wx:if="{{tab.scroll}}">
+            <scroll-view class="zan-tab__bd zan-tab__bd--scroll {{fixed?'zan-tab__bd--fixed':''}}" scrollIntoView="A_{{tab.scrollIntoViewId}}" scrollX="true" style="height: {{tab.height?tab.height+'px':'auto'}};width:88%;">
+                <template is="zan-tab-list" data="{{tab:tab,componentId:componentId}}"></template>
+            </scroll-view>
+            <view bindtap="showSelfTab" class="flex_center" style="width:12%;height:{{tab.height}}px;border-bottom:1rpx solid #e5e5e5;">
+                <image lazyLoad="{{true}}" src="https://qpics.maiyizhi.cn/upload_file_to_tx_15465688391_more_unfold.png" style="width:48rpx;height:48rpx;"></image>
+            </view>
+        </block>
+        <view class="zan-tab__bd {{fixed?'zan-tab__bd--fixed':''}}" wx:else>
+            <template is="zan-tab-list" data="{{tab:tab,componentId:componentId}}"></template>
+        </view>
+    </view>
+    <view wx:else>
+        <view bindtap="hideSelfTab" class="self_tabCover"></view>
+        <view class="self_tab" style="position:{{position}};top: {{top}}">
+            <view class="flex_col_center space_between self_tabHead">
+                <view>全部分类</view>
+                <view bindtap="hideSelfTab" class="flex_center" style="width:90rpx;height:{{tab.height}}px;">
+                    <image lazyLoad="{{true}}" src="https://qpics.maiyizhi.cn/upload_file_to_tx_15465686523_less.png" style="width:48rpx;height:48rpx;"></image>
+                </view>
+            </view>
+            <view class="self_tabBody">
+                <view bindtap="chooseTab" class="self_tabTitle" data-component-id="{{componentId}}" data-item-id="{{item.id}}" data-title="{{item.title}}" style="color:{{tab.selectedId==item.id?'#fff;':''}};background-color:{{tab.selectedId==item.id?'#8b51f4':''}};" wx:for="{{tab.list}}" wx:key="{{index}}">{{item.title}}</view>
+            </view>
+        </view>
+    </view>
+</template>

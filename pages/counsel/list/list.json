@@ -1,0 +1,9 @@
+{
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 200,
+    "usingComponents": {
+        "ads": "/components/ad/ad",
+        "tabbar": "/components/tabbar/tabbar",
+        "attention": "/components/attention/attention"
+    }
+}

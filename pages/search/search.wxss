@@ -1,0 +1,85 @@
+page {
+    background-color: #ffffff;
+}
+
+.bodyBox {
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.title {
+    margin: 25rpx 0;
+    padding: 0 15rpx;
+    color: #666666;
+    font-size: 30rpx;
+}
+
+.catSelected {
+    color: #333333;
+    font-weight: bold;
+}
+
+.keyWord {
+    display: inline-block;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0 30rpx;
+    margin: 0 15rpx;
+    margin-top: 20rpx;
+    font-size: 26rpx;
+    border-radius: 30rpx;
+    background-color: #f2f2f2;
+}
+
+.name {
+    width: 470rpx;
+    font-size: 32rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.star {
+    font-size: 24rpx;
+    color: #a3a3a3;
+}
+
+.emptyBox {
+    padding: 40rpx 0;
+    color: #333333;
+    font-size: 32rpx;
+    text-align: center;
+}
+
+.columnList {
+    width: 50%;
+}
+
+.listItem {
+    width: 360rpx;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.avatar {
+    display: block;
+    width: 330rpx;
+    margin: 0 auto;
+    border-radius: 3px;
+    border: 1px solid #f2f2f2;
+}
+
+.name {
+    margin-top: 20rpx;
+    margin-bottom: 30rpx;
+    line-height: 1;
+    color: #666;
+    font-size: 32rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

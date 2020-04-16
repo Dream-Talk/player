@@ -1,0 +1,103 @@
+<import src="/wux/dialog/dialog.wxml"></import>
+<template is="dialog" data="{{...$wux.dialog}}"></template>
+<view class="container" style="margin-bottom: 40rpx;" wx:if="{{!!result_url}}">
+    <view class="flex_row_center" wx:if="{{!result}}">
+        <image bindload="testResultLoaded" bindtap="preview" lazyload="{{true}}" src="{{result_url}}" style="width: {{testResultSize.width}}rpx;height: {{testResultSize.height}}rpx;margin: 20rpx 0;border-radius: 3px;"></image>
+    </view>
+    <view style="margin: 30rpx; border-radius: 8rpx;background-color: #fff;box-shadow: 1px 1px 5px 2px #e5e5e5;" wx:else>
+        <view style="position: relative;">
+            <image alt="banner" mode="aspectFill" src="{{item.avatar.url}}" style="width: 100%;height:400rpx;border-radius: 8rpx 8rpx 0 0;"></image>
+            <view style="position: absolute;top: 0;left: 0;width: 100%;height: 98%;background-color: #000;border-radius: 8rpx 8rpx 0 0;opacity: 0.3;"></view>
+            <view style="position: absolute;top: 50%;left: 50%;width: 100%;transform: translate(-50%, -50%);color: #fff;font-size: 44rpx;font-weight: bold;text-align: center;">{{item.name}}</view>
+        </view>
+        <view style="padding: 0 30rpx;">
+            <view class="flex_col_center">
+                <image src="{{user.user_avatar}}" style="width: 50rpx;height: 50rpx;border-radius: 25rpx;margin-right: 20rpx;"></image>
+                <view style="color: #999999;font-size: 28rpx;">{{user.user_name}}</view>
+            </view>
+            <view style="line-height: 70rpx;font-size: 36rpx;font-weight: bold;">测试结果：{{result.result1}}</view>
+            <view style="padding-bottom: 30rpx;color: #999999;font-size: 30rpx;">{{result.result2}}</view>
+        </view>
+    </view>
+    <view style="margin-top: 10rpx;">
+        <view class="flex_row" style="width: 690rpx;margin: 30rpx auto;margin-top: 70rpx;" wx:if="{{canOpenQzonePublish}}">
+            <button class="flex_center _scale" openType="share" shareType="{{27}}" style="width: 330rpx;height: 88rpx;line-height: 88rpx;margin-right: 30rpx;;color: #ffffff;font-size: 32rpx;background-color:rgb(63, 115, 230);overflow: visible;">
+                <image src="/styles/fenxsiang.png" style="width: 40rpx;height: 40rpx;margin-right: 6rpx;"></image>
+                <view>叫人来测</view>
+                <view class="bubble">可以偷看朋友答案哦</view>
+            </button>
+            <button catchtap="openQzonePublish" class="flex_center" style="width: 330rpx;height: 88rpx;line-height: 88rpx;color: #ffffff;font-size: 32rpx;background-color: #8b51f4;" type="default">
+                <image src="/styles/shuoshuo.png" style="width: 46rpx;height: 46rpx;margin-right: 6rpx;"></image>
+                <view>发到说说</view>
+            </button>
+        </view>
+        <view class="flex_row" style="width: 690rpx;margin: 30rpx auto;margin-top: 0;" wx:else>
+            <button class="flex_center _scale" openType="share" shareType="{{27}}" style="width: 330rpx;height: 88rpx;line-height: 88rpx;margin-right: 30rpx;;color: #8b51f4;font-size: 32rpx;border: 1px solid #8b51f4;overflow: visible;">
+                <image src="/styles/fenxiang.png" style="width: 40rpx;height: 40rpx;margin-right: 6rpx;"></image>
+                <view>叫人来测</view>
+                <view class="bubble">可以偷看朋友答案哦</view>
+            </button>
+            <button bindopensetting="openSetting" class="flex_center" openType="openSetting" style="width: 330rpx;height: 88rpx;line-height: 88rpx;color: #fff;font-size: 32rpx;background-color: #8b51f4;" type="default" wx:if="{{authSettingScopeWritePhotosAlbum&&canIUseOpenSetting}}">
+                <image src="/styles/xiazai.png" style="width: 40rpx;height: 40rpx;margin-right: 10rpx;"></image>
+                <view>保存测试结果</view>
+            </button>
+            <button catchtap="saveResult" class="flex_center" formType="submit" style="width: 330rpx;height: 88rpx;line-height: 88rpx;color: #fff;font-size: 32rpx;background-color: #8b51f4;" type="default" wx:else>
+                <image src="/styles/xiazai.png" style="width: 40rpx;height: 40rpx;margin-right: 10rpx;"></image>
+                <view>保存测试结果</view>
+            </button>
+        </view>
+    </view>
+    <view style="padding-bottom: 150rpx;background-color: #fff;" wx:if="{{list}}">
+        <view class="flex_col_center">
+            <view style="flex: 1;padding-top: 20rpx;padding-left: 30rpx;font-size: 32rpx;font-weight: bold;">大家都在测</view>
+            <view bindtap="refreshList" class="flex_col_center" style="padding: 20rpx 30rpx 0 40rpx;font-size: 32rpx;">
+                <image src="/styles/refresh.png" style="width: 32rpx;height: 32rpx;margin-right: 10rpx;"></image>
+          换一批
+        </view>
+        </view>
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view bindtap="showDetail" class="flex_col_center" data-id="{{item.id}}" style="padding: 20rpx 30rpx;border-bottom: {{index==4?'':'1px solid #f2f2f2'}};">
+                <view>
+                    <image lazyLoad="{{true}}" mode="aspectFit" src="{{item.avatar.url}}{{tuijianPicSize}}" style="display: block;width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;" wx:if="{{item.avatar.url}}"></image>
+                    <view style="width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;background-color: #7f7f7f;" wx:else></view>
+                </view>
+                <view style="flex: 1;">
+                    <view class="name">{{item.name}}</view>
+                    <view class="star">{{item.times}}人在测</view>
+                </view>
+                <image src="/styles/next.png" style="width: 32rpx;height: 32rpx;"></image>
+            </view>
+            <view wx:if="{{index==1}}">
+                <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="result" type="ad" width="750"></ads>
+            </view>
+        </block>
+    </view>
+    <navigator url="/pages/counsel/list/list?cat={{item.cat}}" wx:if="{{AppPlatform!=='qq_mini'}}">
+        <view style="position: fixed;left: 50%;bottom: 40rpx;transform: translateX(-50%);width: 650rpx;height: 90rpx;line-height: 90rpx;color: #fff;font-size: 36rpx;text-align: center;border-radius: 10rpx;background-color: #8b51f4;">更多{{catStr}}测试</view>
+    </navigator>
+</view>
+<view class="dialog {{animateCss}}" style="position: fixed;top:0;left:0;width:750rpx;height:100vh;background-color: rgba(0,0,0,0.5);" wx:if="{{hasSave}}">
+    <view style="width:600rpx;height:300rpx;background-color: #FFF;position: fixed;top:50%;left:50%;transform: translateX(-50%) translateY(-50%);text-align: center;border-radius: 5px">
+        <view style="height:210rpx;display:flex;align-items: center;justify-content: center;font-size: 36rpx;color:#727172">
+            <view>
+                <view>图片已保存到相册</view>
+                <view>快去发好友和{{AppPlatform!='qq'?'':'QQ空间'}}吧</view>
+            </view>
+        </view>
+        <view class="flex_col_center space_between" style="border-top:solid #eaeaea 1px;">
+            <navigator hoverClass="none" openType="switchTab" style="flex:1;height:90rpx;line-height: 90rpx;" url="/pages/counsel/index/index">更多好玩</navigator>
+            <view catchtap="{{ceshiGuanggao?'openContact':'hideDialog'}}" style="color:#1aad19;height:90rpx;line-height: 90rpx;font-size: 36rpx;border-left:solid #eaeaea 1px;flex:1;" wx:if="{{AppPlatform!='qq'}}">{{ceshiGuanggao?ceshiGuanggao.name:'我知道啦'}}</view>
+        </view>
+        <view bindtap="hideDialog" style="position: absolute;right:-35rpx;top:-35rpx;">
+            <image src="https://youtupics.maiyizhi.cn/guanbi3.png" style="width:70rpx;height:70rpx;"></image>
+        </view>
+    </view>
+</view>
+<video-dialog bind:viewVideo="continueViewVideo" confirmText="{{confirmText}}" content="{{videoContent}}" isShowVideoDialog="{{isShowVideoDialog}}"></video-dialog>
+<ads bind:openContact="guanzhu" guanzhu="guanzhu" name="{{guanggaoName}}" page="result" style="flex:1;" type="guanzhu"></ads>
+<guide bind:confirm="guideConfirm" guideParams="{{guideParams}}" wx:if="{{showContactMenu}}"></guide>
+<view wx:if="{{isShowKaiping}}">
+    <ads bind:openContact="guanzhu" kaiping="kaiping" name="{{guanggaoName}}" page="result" type="kaiping"></ads>
+</view>
+<ads bind:ended="endedRewardedVideoAd" bind:error="errorRewardedVideoAd" bind:loadsuccess="loadedRewardedVideoAd" bind:noended="pauseRewardedVideoAd" id="rewardedVideoAd" name="{{guanggaoName}}" page="{{appName}}" type="rewardedVideoAd" wx:if="{{isShowRewardedVideoAd}}"></ads>
+<jion-mini></jion-mini>

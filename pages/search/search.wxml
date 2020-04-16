@@ -1,0 +1,76 @@
+<view>
+    <van-search bind:cancel="handleActionClick" bind:change="handleChange" bind:clear="handleClear" bind:search="handleConfirm" focus="{{focus}}" showAction="{{true}}" value="{{searchValue}}"></van-search>
+    <view class="bodyBox" wx:if="{{!isSearched&&!list.length}}">
+        <view wx:if="{{hotWords.length}}">
+            <view class="title">热门搜索</view>
+            <view class="flexRow">
+                <view bindtap="handleClickKeyWord" class="keyWord" data-keyword="{{item.keyWord}}" wx:for="{{hotWords}}" wx:key="{{item.keyWord}}">{{item.keyWord}}</view>
+            </view>
+        </view>
+        <view wx:if="{{searchHistory.length}}">
+            <view class="flexRow" style="justify-content: space-between">
+                <view class="title">历史搜索</view>
+                <view bindtap="handleDeleteHistory" class="title">删除</view>
+            </view>
+            <view class="flexRow">
+                <view bindtap="handleClickKeyWord" class="keyWord" data-keyword="{{item.keyWord}}" wx:for="{{searchHistory}}" wx:key="{{item.keyWord}}">{{item.keyWord}}</view>
+            </view>
+        </view>
+        <view style="width: 750rpx;height: 20rpx;margin-top: 30rpx;background-color: #f2f2f2;"></view>
+        <view style="background-color: #fff;" wx:if="{{tuijianlist}}">
+            <view class="flex_col_center">
+                <view style="flex: 1;padding-top: 20rpx;padding-left: 30rpx;font-size: 32rpx;font-weight: bold;">猜你想测</view>
+            </view>
+            <block wx:for="{{tuijianlist}}" wx:key="{{index}}">
+                <navigator url="/pages/counsel/detail/detail?scene={{item.id}}">
+                    <view class="flex_col_center" style="padding: 20rpx 30rpx;text-align: left;border-bottom: {{index==4?'':'1px solid #f2f2f2'}};">
+                        <view>
+                            <image lazyLoad="{{true}}" mode="aspectFit" src="{{item.avatar.url}}{{avatarSize}}" style="display: block;width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;" wx:if="{{item.avatar.url}}"></image>
+                            <view style="width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;background-color: #7f7f7f;" wx:else></view>
+                        </view>
+                        <view style="flex: 1;">
+                            <view class="name">{{item.name}}</view>
+                            <view class="star">{{item.times}}人在测</view>
+                        </view>
+                        <image src="/styles/next.png" style="width: 32rpx;height: 32rpx;"></image>
+                    </view>
+                </navigator>
+                <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="search" type="ad" width="750" wx:if="{{index==1}}"></ads>
+            </block>
+        </view>
+    </view>
+    <view class="bodyBox" wx:if="{{isSearched}}">
+        <view class="flexRow" style="margin-left: 15rpx">
+            <view bindtap="handleClickCat" class="title {{cat===100?'catSelected':''}}" data-cat="{{100}}" style="border-right: 1px solid #dbdbdb">最热</view>
+            <view bindtap="handleClickCat" class="title {{cat===1000?'catSelected':''}}" data-cat="{{1000}}">最新</view>
+        </view>
+        <view wx:if="{{list.length}}">
+            <block wx:for="{{list}}" wx:key="{{index}}">
+                <navigator url="/pages/counsel/detail/detail?scene={{item.id}}">
+                    <view class="flex_col_center" style="padding: 20rpx 30rpx;text-align: left;border-bottom: 1px solid #f2f2f2;">
+                        <view>
+                            <image lazyLoad="{{true}}" mode="aspectFit" src="{{item.avatar}}{{avatarSize}}" style="display: block;width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;" wx:if="{{item.avatar}}"></image>
+                            <view style="width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;background-color: #7f7f7f;" wx:else></view>
+                        </view>
+                        <view style="flex: 1;">
+                            <view class="name">{{item.name}}</view>
+                            <view class="star" wx:if="{{item.times}}">{{item.times}}人在测</view>
+                        </view>
+                        <image src="/styles/next.png" style="width: 32rpx;height: 32rpx;"></image>
+                    </view>
+                </navigator>
+                <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="search" type="ad" width="750" wx:if="{{index==1}}"></ads>
+            </block>
+        </view>
+        <view class="emptyBox" wx:else>没有搜索到</view>
+    </view>
+    <block wx:if="{{isSearched&&list.length>10}}">
+        <view class="weui-loadmore" wx:if="{{hasMore}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view class="weui-loadmore weui-loadmore_line" wx:else>
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了...</view>
+        </view>
+    </block>
+</view>

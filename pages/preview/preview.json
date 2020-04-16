@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "测试结果",
+    "usingComponents": {
+        "ads": "/components/ad/ad",
+        "guide": "/components/guide/guide",
+        "attention": "/components/attention/attention",
+        "jion-mini": "/components/jionMini/jionMini",
+        "video-dialog": "/components/videodialog/dialog"
+    }
+}

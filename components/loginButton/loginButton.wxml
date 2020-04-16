@@ -1,0 +1,6 @@
+<button bindgetuserinfo="handleGetUserInfo" class="{{(clearButton?'clear-button':'')+' '+(clearType?'clear-type':'')}}" disabled="{{disabled}}" openType="getUserInfo" plain="{{plain}}" size="{{size}}" type="{{type}}" wx:if="{{!isLogin}}">
+    <slot></slot>
+</button>
+<button bindtap="handleGetUserInfo2" class="{{(clearButton?'clear-button':'')+' '+(clearType?'clear-type':'')}}" disabled="{{disabled}}" plain="{{plain}}" size="{{size}}" type="{{type}}" wx:if="{{isLogin}}">
+    <slot></slot>
+</button>

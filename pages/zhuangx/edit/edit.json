@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "趣味测试",
+    "navigationBarBackgroundColor": "#36353a",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "ads": "/components/ad/ad",
+        "attention": "/components/attention/attention",
+        "navigator-bar": "/components/navigator/navigator",
+        "video-dialog": "/components/videodialog/dialog"
+    }
+}

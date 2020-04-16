@@ -1,0 +1,97 @@
+.zan-tab {
+    height: 90rpx;
+}
+
+.zan-tab__bd {
+    width: 750rpx;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1rpx solid #e5e5e5;
+    background: #fff;
+}
+
+.zan-tab__bd--fixed {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+.zan-tab__item {
+    flex: 1;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.zan-tab__title {
+    font-size: 28rpx;
+    display: inline-block;
+    color: #666;
+    height: 88rpx;
+    line-height: 88rpx;
+    box-sizing: border-box;
+    margin: 0 20rpx;
+    word-break: keep-all;
+}
+
+.zan-tab__item--selected .zan-tab__title {
+    color: #f44;
+    border-bottom: 4rpx solid #f44;
+}
+
+.zan-tab__bd--scroll {
+    display: block;
+    white-space: nowrap;
+}
+
+.zan-tab__bd--scroll .zan-tab__item {
+    min-width: 160rpx;
+}
+
+.zan-tab__bd--scroll .zan-tab__text {
+    margin: 0 40rpx;
+}
+
+.self_tab {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 28rpx;
+    border-bottom: 2rpx solid #e5e5e5;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+.self_tabCover {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 990;
+}
+
+.self_tabHead {
+    padding: 0 25rpx;
+    color: #666;
+}
+
+.self_tabBody {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 15rpx;
+    padding-bottom: 40rpx;
+}
+
+.self_tabTitle {
+    width: 160rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    margin: 0 10rpx;
+    margin-top: 20rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    border: 2rpx solid #e5e5e5;
+    box-sizing: border-box;
+}

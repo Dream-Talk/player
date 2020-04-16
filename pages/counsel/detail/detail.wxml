@@ -1,0 +1,140 @@
+<import src="/wux/dialog/dialog.wxml"></import>
+<template is="dialog" data="{{...$wux.dialog}}"></template>
+<navigator-bar bind:reback="reback" description="{{description}}" isFromSitemap="{{isFromSitemap}}" titleText="心理测试" url="/pages/counsel/index/index" wx:if="{{isCustomNavigationStyle}}"></navigator-bar>
+<view class="container">
+    <view style="padding-top: 30rpx;background-color: #f2f2f2;" wx:if="{{isShowStartPage}}">
+        <view class="box">
+            <view class="title">{{startPageInfo.name}}</view>
+            <view style="color: #acacac;font-size: 28rpx;text-align: center;">已有<text style="color:#8b51f4;">{{startPageInfo.times}}</text>人在测</view>
+            <image class="banner" lazyLoad="{{true}}" mode="widthFix" src="{{startPageInfo.avatar.url}}{{picSize}}" style="height: {{startPageInfo.avatar.height/startPageInfo.avatar.width*630}}rpx;" wx:if="{{startPageInfo.avatar.url}}"></image>
+            <view class="descript" wx:if="{{startPageInfo.content}}">{{startPageInfo.content}}</view>
+            <form bindsubmit="startTest" reportSubmit="true" style="width: 100%;">
+                <button disabled="{{disable}}" formType="submit" style="height: 90rpx;line-height: 90rpx;margin-top: 30rpx;font-size: 36rpx;background-color: #ae00ff;" type="primary">开始测试</button>
+            </form>
+        </view>
+        <view style="margin: 30rpx 0;background-color: #fff;" wx:if="{{list}}">
+            <view class="flex_col_center">
+                <view style="flex: 1;padding-top: 20rpx;padding-left: 30rpx;font-size: 32rpx;font-weight: bold;">大家都在测</view>
+                <view bindtap="refreshList" class="flex_col_center" style="padding: 20rpx 30rpx 0 40rpx;font-size: 32rpx;">
+                    <image src="/styles/refresh.png" style="width: 32rpx;height: 32rpx;margin-right: 10rpx;"></image>
+          换一批
+        </view>
+            </view>
+            <block wx:for="{{list}}" wx:key="{{index}}">
+                <form bindsubmit="showDetail" data-id="{{item.id}}" reportSubmit="true" style="width: 100%;">
+                    <button class="formidBtn" formType="submit" hoverClass="none" style="line-height: 1.6;">
+                        <view class="flex_col_center" style="padding: 20rpx 30rpx;text-align: left;border-bottom: {{index==4?'':'1px solid #f2f2f2'}};">
+                            <view>
+                                <image lazyLoad="{{true}}" mode="aspectFit" src="{{item.avatar.url}}{{tuijianPicSize}}" style="display: block;width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;" wx:if="{{item.avatar.url}}"></image>
+                                <view style="width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;background-color: #7f7f7f;" wx:else></view>
+                            </view>
+                            <view style="flex: 1;">
+                                <view class="name">{{item.name}}</view>
+                                <view class="star">{{item.times}}人在测</view>
+                            </view>
+                            <image src="/styles/next.png" style="width: 32rpx;height: 32rpx;"></image>
+                        </view>
+                    </button>
+                </form>
+            </block>
+        </view>
+    </view>
+    <form bindsubmit="collectFormId" reportSubmit="true" style="width: 100%;" wx:else>
+        <button class="formidBtn" formType="submit" hoverClass="none" style="width: 750rpx;padding-bottom: 150rpx;line-height: 1.6;text-align: left;">
+            <view style="padding: 0 60rpx;position: relative;z-index: 10;">
+                <view class="flex_row space_between" style="height: 100rpx;line-height: 100rpx;">
+                    <view bindtap="rebackPrevousQuestion" class="previous" wx:if="{{isShowPrevious&&questionInd}}">上一题</view>
+                    <view class="previous" wx:else></view>
+                    <view style="color: #686868;font-size: 32rpx;">{{question.titleNumber}} / {{isShowSubmit?question.titleNumber:questionsLength}}题</view>
+                </view>
+                <view>
+                    <view style="font-size: 36rpx;font-weight: bold;">{{question.titleNumber}}、{{question.asktitle||question.title}}</view>
+                    <block wx:if="{{question.type==2}}">
+                        <view style="position: relative;width: 630rpx;margin: 30rpx auto;">
+                            <image mode="widthFix" src="{{question.chooseImageUrl||(question.isMale?'/styles/zhenglianbzhao_male.jpg':'/styles/zhenglianbzhao_female.jpg')}}" style="width: 630rpx;height: 630rpx;"></image>
+                            <view class="scanImage" style="position: absolute;left: 0;top: 0;width: 630rpx; height: 2px; background-color: #02bf02;opacity: 0;" wx:if="{{isScanImage}}"></view>
+                        </view>
+                        <button bindtap="chooseImage" class="_submit" data-id="{{question.id}}" data-questionind="{{questionInd}}" style="margin-bottom: 30rpx;color: #ae00ff;border: 1px solid #ae00ff;">{{question.chooseImageUrl?'重新上传正面照':'上传清晰正面照'}}</button>
+                        <block wx:if="{{isShowSubmit}}">
+                            <form bindsubmit="formSubmit" reportSubmit="true" wx:if="{{isLogin}}">
+                                <button class="_submit flex_center" formType="submit" style="color: #FFF;background-color: #ae00ff;">
+                                    <image src="/styles/video_white.png" style="width: 18px;height: 18px;margin-right: 5px;" wx:if="{{canUseRewardedVideoAd}}"></image>
+                  立即分析结果
+                </button>
+                            </form>
+                            <login-button bind:error="loginFail" bind:success="loginButton" clearButton="true" wx:else>
+                                <button class="_submit flex_center" style="color: #FFF;background-color: #ae00ff;">
+                                    <image src="/styles/video_white.png" style="width: 18px;height: 18px;margin-right: 5px;" wx:if="{{canUseRewardedVideoAd}}"></image>
+                  立即分析结果
+                </button>
+                            </login-button>
+                        </block>
+                    </block>
+                    <block wx:elif="{{question.type==3}}">
+                        <input bindinput="inputText" class="input"></input>
+                        <button bindtap="confirmInputText" class="_submit" data-id="{{question.id}}" data-questionind="{{questionInd}}" data-title="{{question.title}}" style="margin-bottom: 30rpx;color: #ae00ff;border: 1px solid #ae00ff;" wx:if="{{!isShowSubmit}}">下一步</button>
+                        <block wx:else>
+                            <form bindsubmit="formSubmit" reportSubmit="true" wx:if="{{isLogin}}">
+                                <button class="_submit flex_center" formType="submit" style="color: #FFF;background-color: #ae00ff;">
+                                    <image src="/styles/video_white.png" style="width: 18px;height: 18px;margin-right: 5px;" wx:if="{{canUseRewardedVideoAd}}"></image>
+                  立即分析结果
+                </button>
+                            </form>
+                            <login-button bind:error="loginFail" bind:success="loginButton" clearButton="true" wx:else>
+                                <button class="_submit flex_center" style="color: #FFF;background-color: #ae00ff;">
+                                    <image src="/styles/video_white.png" style="width: 18px;height: 18px;margin-right: 5px;" wx:if="{{canUseRewardedVideoAd}}"></image>
+                  立即分析结果
+                </button>
+                            </login-button>
+                        </block>
+                    </block>
+                    <block wx:elif="{{question.type==1}}">
+                        <image lazyLoad="{{true}}" mode="widthFix" src="{{question.image}}{{picSize}}" style="display: block;width: 100%;margin-top: 20rpx;border-radius: 6rpx;" wx:if="{{question.image}}"></image>
+                        <audio id="audio{{questionInd}}" src="{{question.audio}}" wx:if="{{question.audio}}"></audio>
+                        <video controls objectFit="contain" src="{{question.video}}" style="width: 100%;margin-top: 20rpx;" wx:if="{{question.video}}"></video>
+                        <view bindtap="selectAnswer" class="flex_col_center answer" data-answerind="{{answerInd}}" data-id="{{question.id}}" data-questionind="{{questionInd}}" data-type="{{question.type}}" style="color: {{answer.select?'#fff':''}};background-color: {{answer.select?'#c2b3e7':''}}" wx:for="{{question.choice}}" wx:for-index="answerInd" wx:for-item="answer" wx:key="{{answerInd}}">
+                            <image lazyLoad="{{true}}" mode="widthFix" src="{{answer.image}}{{answerPicSize}}" style="display: block;width: 490rpx;margin: 30rpx;margin-left: 0;border-radius: 6rpx;" wx:if="{{answer.image}}"></image>
+                            <view wx:elif="{{answer.title}}">{{answer.title}}</view>
+                            <view class="label flex_center">{{answerNumbers[answerInd]}}</view>
+                        </view>
+                    </block>
+                    <block wx:elif="{{question.type!=6||question.type!=7}}">
+                        <image lazyLoad="{{true}}" mode="widthFix" src="{{question.askimg}}{{picSize}}" style="display: block;width: 100%;margin-top: 20rpx;border-radius: 6rpx;" wx:if="{{question.askimg}}"></image>
+                        <audio id="audio{{questionInd}}" src="{{question.audio}}" wx:if="{{question.audio}}"></audio>
+                        <video controls objectFit="contain" src="{{question.video}}" style="width: 100%;margin-top: 20rpx;" wx:if="{{question.video}}"></video>
+                        <view bindtap="selectAnswer" class="flex_col_center answer" data-answerind="{{answerInd}}" data-questionind="{{questionInd}}" style="color: {{answer.select?'#fff':''}};background-color: {{answer.select?'#c2b3e7':''}};" wx:for="{{question.answer}}" wx:for-index="answerInd" wx:for-item="answer" wx:key="{{answerInd}}">
+                            <image lazyLoad="{{true}}" mode="widthFix" src="{{answer.answerimg}}{{answerPicSize}}" style="display: block;width: 490rpx;margin: 30rpx;margin-left: 0;border-radius: 6rpx;" wx:if="{{answer.answerimg}}"></image>
+                            <view wx:elif="{{answer.content}}">{{answer.content}}</view>
+                            <view class="label flex_center">{{answerNumbers[answerInd]}}</view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <view>
+            </view>
+            <view class="submit" wx:if="{{isShowSubmit&&question.type!=2&&question.type!=3}}">
+                <form bindsubmit="formSubmit" reportSubmit="true" wx:if="{{isLogin}}">
+                    <button class="flex_center" formType="submit">
+                        <image src="/styles/video_white.png" style="width: 18px;height: 18px;margin-right: 5px;" wx:if="{{canUseRewardedVideoAd}}"></image>
+            立即分析结果
+          </button>
+                </form>
+                <login-button bind:error="loginFail" bind:success="loginButton" clearButton="true" wx:else>
+                    <button class="flex_center">
+                        <image src="/styles/video_white.png" style="width: 18px;height: 18px;margin-right: 5px;" wx:if="{{canUseRewardedVideoAd}}"></image>
+            立即分析结果
+          </button>
+                </login-button>
+            </view>
+        </button>
+    </form>
+</view>
+<video-dialog bind:viewVideo="continueViewVideo" confirmText="{{confirmText}}" content="{{videoContent}}" isShowVideoDialog="{{isShowVideoDialog}}"></video-dialog>
+<block wx:if="{{!isShowTuijian&&isShowStartPage}}">
+    <ads bind:openContact="guanzhu" guanzhu="guanzhu" name="{{guanggaoName}}" page="detail" type="guanzhu"></ads>
+    <ads bind:openContact="guanzhu" haowan="haowan" name="{{guanggaoName}}" page="detail" type="haowan"></ads>
+</block>
+<view wx:if="{{isShowKaiping}}">
+    <ads bind:openContact="guanzhu" kaiping="kaiping" name="{{guanggaoName}}" page="detail" type="kaiping"></ads>
+</view>
+<ads bind:ended="endedRewardedVideoAd" bind:error="errorRewardedVideoAd" bind:loadsuccess="loadedRewardedVideoAd" bind:noended="pauseRewardedVideoAd" id="rewardedVideoAd" name="{{guanggaoName}}" page="{{appName}}" type="rewardedVideoAd" wx:if="{{isShowRewardedVideoAd}}"></ads>

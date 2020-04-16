@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "测试结果",
+    "usingComponents": {
+        "login-button": "/components/loginButton/loginButton",
+        "guide": "/components/guide/guide",
+        "attention": "/components/attention/attention",
+        "jion-mini": "/components/jionMini/jionMini",
+        "video-dialog": "/components/videodialog/dialog"
+    }
+}

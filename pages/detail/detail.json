@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "",
+    "usingComponents": {
+        "ads": "/components/ad/ad",
+        "video-dialog": "/components/videodialog/dialog"
+    }
+}

@@ -1,0 +1,57 @@
+.tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    border-top: 1px solid #d5d5d5;
+    display: flex;
+    background: #fff;
+}
+
+.tabbar-item {
+    flex: 1;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 8rpx 10rpx 0;
+    color: #333333;
+}
+
+.tabbar-item-icon {
+    margin-bottom: 3px;
+    height: 28px;
+}
+
+.tabbar-item-icon image {
+    width: 28px;
+    height: 28px;
+}
+
+.tabbar-item-text {
+    font-size: 10px;
+    line-height: 10px;
+}
+
+.tabbar-item.active {
+    color: #8b51f4;
+}
+
+.tabbar-item.qq_active {
+    color: rgb(86,200,249);
+}
+
+.redDot {
+    position: relative;
+}
+
+.redDot::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgb(244,52,56);
+}

@@ -1,0 +1,70 @@
+.jionBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    right: 5%;
+    padding: 10rpx 20rpx;
+    padding-right: 0;
+    border-radius: 50rpx;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 110;
+}
+
+.jionBox::after {
+    content: "";
+    border: 10px solid transparent;
+    border-bottom-color: rgba(0,0,0,0.6);
+    position: absolute;
+    right: 20%;
+    top: -20px;
+}
+
+.desText {
+    font-size: 28rpx;
+    color: #fff;
+    flex: 1;
+    text-align: center;
+}
+
+.cancel {
+    display: block;
+    width: 36rpx;
+    height: 36rpx;
+    margin: 10rpx 20rpx;
+}
+
+@-webkit-keyframes scale {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.scale {
+    animation-name: scale;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}

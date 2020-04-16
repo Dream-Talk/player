@@ -1,0 +1,136 @@
+<import src="../../item/emptyList.wxml"></import>
+<import src="../../item/noNet.wxml"></import>
+<import src="../../../wux/dialog/dialog.wxml"></import>
+<import src="/zanui/tab/index.wxml"></import>
+<view class="container" wx:if="{{!nonet}}">
+    <block wx:if="{{!isVerify}}">
+        <navigator class="weui-search-bar" hoverClass="none" url="/pages/search/search">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" size="14" type="search"></icon>
+                    <input bindinput="inputTyping" class="weui-search-bar__input" confirmType="search" focus="{{inputShowed}}" placeholder="关键词" type="text" value="{{inputVal}}"></input>
+                    <view bindtap="clearInput" class="weui-icon-clear" style="top: 50%; transform: translateY(-50%);" wx:if="{{inputVal.length>0}}">
+                        <icon size="14" type="clear"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}">
+                    <icon class="weui-icon-search" size="14" type="search"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view bindtap="hideInput" class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" style="color: #61abf1;">取消</view>
+        </navigator>
+        <view class="weui-cells searchbar-result" wx:if="{{searchResult.length>0&&inputVal.length>0}}">
+            <view bindtap="select" class="weui-cell" data-avatar="{{item.avatar}}" data-id="{{item.id}}" data-name="{{item.name}}" data-path="{{item.path}}" hoverClass="weui-cell_active" wx:for="{{searchResult}}" wx:key="*this">
+                <image src="{{item.avatar}}?imageView2/2/w/150" style="width: 2em;height: 2em;margin-right: 0.6em;"></image>
+                <view class="weui-cell__bd">
+                    <view>{{item.name}}</view>
+                </view>
+                <image src="https://youtupics.maiyizhi.cn/zuoshangjiantou.png" style="width: 2em;height: 2em;margin-right: 0.6em;"></image>
+            </view>
+        </view>
+        <view class="weui-cells searchbar-result" wx:elif="{{inputVal.length>0}}">
+            <view class="weui-cell" hoverClass="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>木有找到呢</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length==0&&searchHistory.length>0}}">
+            <view class="weui-cell" hoverClass="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view style="font-weight: 700;">历史搜索</view>
+                </view>
+            </view>
+            <view bindtap="select" class="weui-cell" data-avatar="{{item.avatar}}" data-id="{{item.id}}" data-name="{{item.name}}" data-path="{{item.path}}" hoverClass="weui-cell_active" wx:for="{{searchHistory}}" wx:key="*this">
+                <image src="{{item.avatar}}?imageView2/2/w/150" style="width: 2em;height: 2em;margin-right: 0.6em;"></image>
+                <view class="weui-cell__bd">
+                    <view>{{item.name}}</view>
+                </view>
+                <image src="https://youtupics.maiyizhi.cn/zuoshangjiantou.png" style="width: 2em;height: 2em;margin-right: 0.6em;"></image>
+            </view>
+        </view>
+        <view style="background-color: #fff;">
+            <view style="min-height: 100vh;">
+                <template is="zan-tab" data="{{tab:tabs,componentId:'tabs',showSelfTab:showSelfTab,position:'relative',top:'0'}}" wx:if="{{tabs.list.length>3}}"></template>
+                <view>
+                    <block wx:if="{{isLogin||rejectTwo||isSitemap}}">
+                        <block wx:for="{{list}}" wx:key="{{index}}">
+                            <navigator class="flex_col_center" url="/pages/zhuangx/edit/edit?scene={{item.id}}">
+                                <form bindsubmit="collectFormId" reportSubmit="true" style="width: 100%;">
+                                    <button class="formidBtn" formType="submit" hoverClass="none" style="line-height: 1.6;">
+                                        <view class="flex_col_center" style="padding: 20rpx 30rpx;text-align: left;border-bottom: 1px solid #f2f2f2;">
+                                            <view>
+                                                <image lazyLoad="{{true}}" mode="aspectFit" src="{{item.avatar.url}}{{avatarSize}}" style="display: block;width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;" wx:if="{{item.avatar.url}}"></image>
+                                                <view style="width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;background-color: #7f7f7f;" wx:else></view>
+                                            </view>
+                                            <view style="flex: 1;">
+                                                <view class="name">{{item.name}}</view>
+                                                <view class="star">{{item.times}}人在测</view>
+                                            </view>
+                                            <image src="/styles/next.png" style="width: 32rpx;height: 32rpx;"></image>
+                                        </view>
+                                    </button>
+                                </form>
+                            </navigator>
+                            <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="list" type="ad" width="750" wx:if="{{index==1}}"></ads>
+                        </block>
+                    </block>
+                    <block wx:else>
+                        <block wx:for="{{list}}" wx:key="{{index}}">
+                            <login-button bind:error="selectTemplate" bind:success="selectTemplate" clearButton="{{true}}" clearType="{{true}}" data-id="{{item.id}}" data-path="{{item.path}}">
+                                <view class="flex_col_center" style="padding: 20rpx 30rpx;line-height: normal;text-align: left;border-bottom: 1px solid #f2f2f2;">
+                                    <view>
+                                        <image lazyLoad="{{true}}" mode="aspectFit" src="{{item.avatar.url}}{{avatarSize}}" style="display: block;width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;" wx:if="{{item.avatar.url}}"></image>
+                                        <view style="width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;background-color: #7f7f7f;" wx:else></view>
+                                    </view>
+                                    <view style="flex: 1;">
+                                        <view class="name">{{item.name}}</view>
+                                        <view class="star">{{item.times}}人在测</view>
+                                    </view>
+                                    <image src="/styles/next.png" style="width: 44rpx;height: 44rpx;"></image>
+                                </view>
+                            </login-button>
+                            <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="list" type="ad" width="750" wx:if="{{index==1}}"></ads>
+                        </block>
+                    </block>
+                </view>
+            </view>
+            <view class="">
+                <view class="weui-loadmore flex_center" wx:if="{{hasMore}}">
+                    <image src="/styles/loading.gif" style="width: 16px;height: 16px;margin-right: 10rpx;"></image>
+                    <view class="weui-loadmore__tips">正在加载</view>
+                </view>
+                <view class="weui-loadmore weui-loadmore_line" wx:elif="{{list.length>3}}">
+                    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">更多模板正在路上...</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-tab__content" wx:if="{{list.length==0}}">
+            <template is="empty_list" data="{{title:'暂时没有找到呢'}}"></template>
+        </view>
+        <ads bind:openContact="guanzhu" guanzhu="guanzhu" name="{{guanggaoName}}" page="list" type="guanzhu"></ads>
+        <ads bind:openContact="guanzhu" haowan="haowan" name="{{guanggaoName}}" page="list" type="haowan"></ads>
+    </block>
+    <navigator style="float: left;position: relative;background-color:#fff;" url="/pages/facture/index/index" wx:else>
+        <view class="grid" hoverClass="weui-grid_active">
+            <image class="weui-grid__icon" src="https://youtupics.maiyizhi.cn/touxiang_icon.png"></image>
+        </view>
+        <view>
+            <view class="weui-grid__label">头像制作</view>
+        </view>
+    </navigator>
+</view>
+<view catchtap="refresh" class="container page__bd" wx:else>
+    <template is="nonet" data="{{title:'网络异常，请点击重试'}}"></template>
+</view>
+<view bindtap="close" class="drawer_screen" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+    <view class="drawer_content flex_col_center">
+        <view class="">本平台生成的内容仅供娱乐，请遵守法律法规，请勿用于违法途径</view>
+    </view>
+    <view bindtap="close" style="position: absolute;right:-35rpx;top:-35rpx;">
+        <image src="https://youtupics.maiyizhi.cn/guanbi3.png" style="width:70rpx;height:70rpx;"></image>
+    </view>
+</view>
+<tabbar activeIdx="1" auth="0" wx:if="{{!cannotUseHideTabBar}}"></tabbar>

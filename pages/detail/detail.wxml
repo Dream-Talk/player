@@ -1,0 +1,43 @@
+<import src="/wux/dialog/dialog.wxml"></import>
+<template is="dialog" data="{{...$wux.dialog}}"></template>
+<view>
+    <view class="result">
+        <navigator url="{{template.type==5?'/pages/counsel/detail/detail?scene='+template_id:'/pages/zhuangx/edit/edit?scene='+template_id}}">
+            <view class="title">{{template.name}}</view>
+            <image lazyLoad="{{true}}" mode="widthFix" src="{{template.avatar.url}}{{avatarSize}}" style="display: block;width: 630rpx;margin: 30rpx auto;border-radius: 6rpx;height: {{template.avatar.height/template.avatar.width*630}}rpx;"></image>
+        </navigator>
+        <block wx:if="{{results&&results.length}}">
+            <view style="margin: 0 20rpx;padding-bottom: 30rpx;font-size: 32rpx;font-weight: bold;text-align: center;border-bottom: 1px solid #f2f2f2;">测过的朋友</view>
+            <view catchtap="viewRewardedVideoAd" class="flex_col_center resultList" data-index="{{index}}" data-url="{{item.url}}" wx:for="{{results}}" wx:key="{{index}}">
+                <image src="{{item.user_avatar}}" style="width: 90rpx;height: 90rpx;margin-right: 20rpx;border-radius: 50%;"></image>
+                <view style="flex: 1;font-size: 32rpx;">
+                    <view>{{item.user_name}}</view>
+                    <view style="color: #666;">查看TA的测试结果</view>
+                </view>
+                <image src="/styles/video_block.png" style="width: 20px;height: 20px;margin-right: 6rpx;" wx:if="{{canUseRewardedVideoAd}}"></image>
+                <view class="weui-select weui-select_in-select-after" style="border-right: none;"></view>
+            </view>
+        </block>
+        <view style="text-align: center;" wx:else>
+            <image lazyLoad="{{true}}" mode="widthFix" src="https://youtupics.maiyizhi.cn/upload_15650731212.png" style="width: 200rpx;"></image>
+            <view style="color: #999;font-size: 32rpx;">还没有好友参与测试哦</view>
+        </view>
+        <view class="flex_row" style="margin: 40rpx 0 20rpx;">
+            <block wx:if="{{selfData}}">
+                <button bindtap="viewSelfTestResult" style="width: 275rpx;height: 88rpx;line-height: 88rpx;margin: 0 20rpx;color: #ae00ff;font-size: 32rpx;border: 1px solid #ae00ff;">我的测试结果</button>
+                <button class="scale" openType="share" shareType="{{27}}" style="width: 275rpx;height: 88rpx;line-height: 88rpx;margin: 0 20rpx;color: #fff;font-size: 32rpx;background-color: #ae00ff;overflow: visible;">
+          邀请朋友来测
+          <view class="bubble">可以偷看朋友答案哦</view>
+                </button>
+            </block>
+            <navigator url="{{template.type==5?'/pages/counsel/detail/detail?isSaveSelfResult=true&scene='+template_id:'/pages/zhuangx/edit/edit?isSaveSelfResult=true&scene='+template_id}}" wx:else>
+                <button style="width: 590rpx;height: 88rpx;line-height: 88rpx;margin: 0 20rpx;color: #fff;font-size: 32rpx;background-color: #ae00ff;">我也要测</button>
+            </navigator>
+        </view>
+    </view>
+    <view style="margin-top: 30rpx;">
+        <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="shareList" type="ad" width="750"></ads>
+    </view>
+</view>
+<video-dialog bind:viewVideo="continueViewVideo" confirmText="{{confirmText}}" content="{{videoContent}}" isShowVideoDialog="{{isShowVideoDialog}}"></video-dialog>
+<ads bind:ended="endedRewardedVideoAd" bind:error="errorRewardedVideoAd" bind:loadsuccess="loadedRewardedVideoAd" bind:noended="pauseRewardedVideoAd" id="rewardedVideoAd" name="{{guanggaoName}}" page="{{appName}}" type="rewardedVideoAd" wx:if="{{isShowRewardedVideoAd}}"></ads>

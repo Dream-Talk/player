@@ -1,0 +1,14 @@
+.clear-button {
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+}
+
+.clear-button::after {
+    border: none;
+}
+
+.clear-type {
+    color: inherit!important;
+    background-color: inherit!important;
+}

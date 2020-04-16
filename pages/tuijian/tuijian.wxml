@@ -1,0 +1,127 @@
+<import src="../item/noNet.wxml"></import>
+<view class="container " wx:if="{{!nonet}}">
+    <block wx:if="{{!shenhe}}">
+        <swiper autoplay="true" circular="true" duration="1000" id="slide" indicatorDots="ture" interval="5000" wx:if="{{slide.length>0}}">
+            <swiper-item wx:for="{{slide}}" wx:key="{{item.pic}}">
+                <block wx:if="{{item.appid}}">
+                    <navigator appId="{{item.appid}}" class="slide-image" path="{{item.url}}" target="miniProgram" wx:if="{{!item.preview}}">
+                        <image class="slide-image" lazyload="true" src="{{item.pic}}{{slidePicSize}}"></image>
+                    </navigator>
+                    <view bindtap="tiaozhuan" class="slide-image" data-appid="{{item.appid}}" data-preview="{{item.preview}}" data-url="{{item.url}}" wx:else>
+                        <image class="slide-image" lazyload="true" src="{{item.pic}}{{slidePicSize}}"></image>
+                    </view>
+                </block>
+                <view bindtap="navigateToWebview" data-path="{{item.path}}" wx:elif="{{item.type=='webview'}}">
+                    <image class="slide-image" lazyload="true" src="{{item.pic}}{{slidePicSize}}"></image>
+                </view>
+                <navigator class="slide-image" url="{{item.url}}" wx:else>
+                    <image class="slide-image" lazyload="true" src="{{item.pic}}{{slidePicSize}}"></image>
+                </navigator>
+            </swiper-item>
+        </swiper>
+        <view style="background-color: #FFF;padding-top: 30rpx" wx:if="{{tuijian}}">
+            <view wx:for="{{tuijian}}" wx:key="others">
+                <block wx:if="{{item.type=='tap'}}">
+                    <navigator appId="{{item.appid}}" path="{{item.url}}" style="display: flex;justify-content: center;align-items: center;margin-left: 30rpx;padding: 0" target="miniProgram" wx:if="{{!item.preview}}">
+                        <view style="display: inline-block;width:110rpx;height:110rpx;margin-right: 30rpx">
+                            <image src="{{item.pic}}" style="width:110rpx;height:110rpx;border-radius: 10rpx"></image>
+                        </view>
+                        <view class="zan-cell zan-cell--access" style="flex:1;border-bottom:solid #F0F0F0 1px;margin-bottom: 0;height:120rpx;padding-left:0;padding-right: 0;margin-right: 30rpx">
+                            <view class="zan-cell__bd">
+                                <view class="zan-cell__text" style="font-size: 32rpx">{{item.name}}</view>
+                                <view class="zan-cell__desc" style="font-size: 24rpx;color:#999999;margin-top:5rpx">{{item.desc}}</view>
+                            </view>
+                            <view style="float: right;border:solid red 1px;color:red;height:50rpx;line-height: 50rpx;border-radius: 30rpx;width:100rpx;text-align: center;font-size: 30rpx">打开</view>
+                        </view>
+                    </navigator>
+                    <view catchtap="{{item.event}}" data-appid="{{item.appid}}" data-preview="{{item.preview}}" data-url="{{item.url}}" style="display: flex;justify-content: center;align-items: center;margin-left: 30rpx;padding: 0" wx:else>
+                        <view style="display: inline-block;width:110rpx;height:110rpx;margin-right: 30rpx">
+                            <image src="{{item.pic}}" style="width:110rpx;height:110rpx;border-radius: 10rpx"></image>
+                        </view>
+                        <view class="zan-cell zan-cell--access" style="flex:1;border-bottom:solid #F0F0F0 1px;margin-bottom: 0;height:120rpx;padding-left:0;padding-right: 0;margin-right: 30rpx">
+                            <view class="zan-cell__bd">
+                                <view class="zan-cell__text" style="font-size: 32rpx">{{item.name}}</view>
+                                <view class="zan-cell__desc" style="font-size: 24rpx;color:#999999;margin-top:5rpx">{{item.desc}}</view>
+                            </view>
+                            <view style="float: right;border:solid red 1px;color:red;height:50rpx;line-height: 50rpx;border-radius: 30rpx;width:100rpx;text-align: center;font-size: 30rpx">打开</view>
+                        </view>
+                    </view>
+                </block>
+                <view bindtap="navigateToWebview" data-path="{{item.path}}" style="display: flex;justify-content: center;align-items: center;margin-left: 30rpx;padding: 0" wx:elif="{{item.type=='webview'}}">
+                    <view style="display: inline-block;width:110rpx;height:110rpx;margin-right:30rpx">
+                        <image src="{{item.pic}}" style="width:110rpx;height:110rpx;border-radius: 10rpx"></image>
+                    </view>
+                    <view class="zan-cell zan-cell--access" style="flex:1;border-bottom:solid #F0F0F0 1px;margin-bottom: 0;height:120rpx;padding-left:0;padding-right: 0;margin-right: 30rpx">
+                        <view class="zan-cell__bd">
+                            <view class="zan-cell__text" style="font-size: 32rpx">{{item.name}}</view>
+                            <view class="zan-cell__desc" style="font-size: 24rpx;color:#999999;margin-top: 5rpx">{{item.desc}}</view>
+                        </view>
+                        <view style="float: right;border:solid red 1px;color:red;height:50rpx;line-height: 50rpx;border-radius: 30rpx;width:100rpx;text-align: center;font-size: 30rpx">打开</view>
+                    </view>
+                </view>
+                <navigator style="display: flex;justify-content: center;align-items: center;margin-left: 30rpx;padding: 0" url="{{item.url}}" wx:elif="{{item.type=='link'}}">
+                    <view style="display: inline-block;width:110rpx;height:110rpx;margin-right:30rpx">
+                        <image src="{{item.pic}}" style="width:110rpx;height:110rpx;border-radius: 10rpx"></image>
+                    </view>
+                    <view class="zan-cell zan-cell--access" style="flex:1;border-bottom:solid #F0F0F0 1px;margin-bottom: 0;height:120rpx;padding-left:0;padding-right: 0;margin-right: 30rpx">
+                        <view class="zan-cell__bd">
+                            <view class="zan-cell__text" style="font-size: 32rpx">{{item.name}}</view>
+                            <view class="zan-cell__desc" style="font-size: 24rpx;color:#999999;margin-top: 5rpx">{{item.desc}}</view>
+                        </view>
+                        <view style="float: right;border:solid red 1px;color:red;height:50rpx;line-height: 50rpx;border-radius: 30rpx;width:100rpx;text-align: center;font-size: 30rpx">打开</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view style="margin-top: 30rpx;">
+            <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="tuijian" type="ad"></ads>
+        </view>
+        <view style="padding:30rpx 0">
+            <view style="padding-left: 30rpx;font-size: 35rpx;font-weight: 500;" wx:if="{{others.length}}">更多好玩</view>
+            <view class="flex_row" style="flex-wrap:wrap;padding:0 10rpx;box-sizing: border-box;">
+                <block wx:for="{{others}}" wx:for-index="idx" wx:key="{{item.idx}}">
+                    <block wx:if="{{item.type=='tap'}}">
+                        <navigator appId="{{item.appid}}" class="block" path="{{item.url}}" style="" target="miniProgram" wx:if="{{!item.preview}}">
+                            <view class="icon" hoverClass="weui-grid_active" style="">
+                                <image src="{{item.pic}}" style="border-radius: 50%"></image>
+                            </view>
+                            <view style="font-size: 30rpx;text-align: center;margin-top: 10rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.name}}</view>
+                            <view style="font-size: 22rpx;text-align: center;margin-top: 10rpx;color:#999;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.number}}万人正在玩</view>
+                        </navigator>
+                        <view catchtap="{{item.event}}" class="block" data-appid="{{item.appid}}" data-preview="{{item.preview}}" data-url="{{item.url}}" style="" wx:else>
+                            <view class="icon" hoverClass="weui-grid_active" style="">
+                                <image src="{{item.pic}}" style="border-radius: 50%"></image>
+                            </view>
+                            <view style="font-size: 30rpx;text-align: center;margin-top: 10rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.name}}</view>
+                            <view style="font-size: 22rpx;text-align: center;margin-top: 10rpx;color:#999;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.number}}万人正在玩</view>
+                        </view>
+                    </block>
+                    <view bindtap="navigateToWebview" class="block" data-path="{{item.path}}" wx:elif="{{item.type=='webview'}}">
+                        <view class="icon" hoverClass="weui-grid_active" style="">
+                            <image src="{{item.pic}}" style="border-radius: 50%"></image>
+                        </view>
+                        <view style="font-size: 30rpx;text-align: center;margin-top: 10rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.name}}</view>
+                        <view style="font-size: 22rpx;text-align: center;margin-top: 10rpx;color:#999;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.number}}万人正在玩</view>
+                    </view>
+                    <navigator class="block" style="" url="{{item.url}}" wx:elif="{{item.type=='link'}}">
+                        <view class="icon" hoverClass="weui-grid_active" style="">
+                            <image src="{{item.pic}}" style="border-radius: 50%"></image>
+                        </view>
+                        <view style="font-size: 24rpx;text-align: center;margin-top: 10rpx">{{item.name}}</view>
+                    </navigator>
+                </block>
+            </view>
+        </view>
+    </block>
+    <navigator style="float: left;position: relative;background-color:#fff;" url="/pages/facture/index/index" wx:else>
+        <view class="grid" hoverClass="weui-grid_active">
+            <image class="weui-grid__icon" src="http://icons.maiyizhi.cn/touxiang_icon.png"></image>
+        </view>
+        <view>
+            <view class="weui-grid__label">头像制作</view>
+        </view>
+    </navigator>
+</view>
+<view catchtap="initPage" class="container page__bd" wx:else>
+    <template is="nonet" data="{{title:'网络异常，请点击重试'}}"></template>
+</view>

@@ -1,0 +1,12 @@
+.flex_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex_col_center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

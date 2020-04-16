@@ -1,0 +1,59 @@
+<template name="weCropper">
+    <canvas bindtouchend="clipTouchEnd" bindtouchmove="clipTouchMove" bindtouchstart="clipTouchStart" canvasId="{{id}}" class="cropper" disableScroll="true" style="width:{{width}}px;height:{{height}}px;"></canvas>
+</template>
+<import src="/wux/dialog/dialog.wxml"></import>
+<template is="dialog" data="{{...$wux.dialog}}"></template>
+<view class="mainBox">
+    <view style="width: 100%;height: auto">
+        <view style="padding-top:10rpx;padding-bottom:10rpx;">
+            <view class="avatar-base">
+                <view bindtap="changeSqu" class="avatar-squ {{!isCircle?'avatar-active':''}}">
+            方形头像
+          </view>
+                <view bindtap="changeCircle" class="avatar-cir {{isCircle?'avatar-active':''}}">
+            圆形头像
+          </view>
+            </view>
+        </view>
+    </view>
+    <view style="position:relative;margin-top:9%;">
+        <image src="{{backgroundSrc}}" style="width:{{avatarCanvasWidth}}px;height:{{avatarCanvasWidth}}px;{{isCircle?'border-radius: 50%;':''}}margin: 0 auto;display: block;"></image>
+        <canvas bindtouchend="avatarTouchEnd" bindtouchmove="avatarTouchMove" bindtouchstart="avatarTouchStart" canvasId="avatar" disableScroll="true" hidden="{{hideCanvas}}" style="width:{{avatarCanvasWidth}}px;height:{{avatarCanvasWidth}}px;position: absolute;top:0;left: 5%;background-color:transparent;"></canvas>
+    </view>
+    <view catchtap="toggleDialog" style="z-index: 1;position: fixed;left:0;top:0;bottom: 0;right:0;background-color:rgba(0,0,0,0.6); " wx:if="{{showDialog}}"></view>
+    <view animation="{{animationData}}" class="hearderList" hidden="{{!showDialog}}" style="background-color: #FFF;position:fixed; bottom:-20px; height:250rpx; width:100%; z-index: 2;">
+        <scroll-view scrollX class="scroll" style="margin-top: 48rpx" wx:if="{{showDialog}}">
+            <view class="flex_row" style="width:{{100*urls.length}}rpx;">
+                <view style="padding:10rpx; margin: 0rpx 10rpx;background-color: #e8e8e8;width:135rpx;height:135rpx" wx:for="{{iconList}}" wx:key="item">
+                    <view catchtap="selectAvatar" data-avatarpath="{{item}}" style="line-height:145rpx">
+                        <image src="{{item}}" style="width: 135rpx;height: 135rpx;"></image>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view hidden="{{showDialog}}" style=" z-index:1;margin-top: 7%;">
+        <view style="width:750rpx;background-color: #FFF;font-size: 30rpx;padding:15rpx 0 0 20rpx;margin-top: -30rpx;box-sizing: border-box;color:#1aad19">请选择下方头像挂件:</view>
+        <view class="avatarBox" style="padding: 10rpx 0;height:140rpx; display:block">
+            <scroll-view scrollX class="scroll" style="background-color: #FFF">
+                <view class="flex_row">
+                    <view style="margin: 5.5rpx 10rpx;background-color: #fff;" wx:for="{{urls}}" wx:key="value">
+                        <image bindtap="itemClick" class="avatar" data-index="{{index}}" src="{{item}}" style="width: 150rpx;height: 150rpx;"></image>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="btn-image" style="margin-top: 45rpx">
+            <form bindsubmit="uploadOriginalImage" reportSubmit="true">
+                <button plain class="formidBtn" formType="submit" style="border:none;">
+                    <view class="upload-avatar">{{backgroundSrc?'换个头像':'选择头像'}} </view>
+                </button>
+            </form>
+            <form bindsubmit="scanImage" reportSubmit="true">
+                <button plain class="formidBtn" formType="submit" style="border:none;">
+                    <view class="download-phone"> 预览</view>
+                </button>
+            </form>
+        </view>
+    </view>
+</view>

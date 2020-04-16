@@ -1,0 +1,16 @@
+<template name="weCropper">
+    <canvas bindtouchend="touchEnd" bindtouchmove="touchMove" bindtouchstart="touchStart" canvasId="{{id}}" class="cropper" disableScroll="true" style="width:{{width}}px;height:{{height}}px;background-color: rgba(0, 0, 0, 0.8);"></canvas>
+</template>
+<view class="cropper-wrapper">
+    <template is="weCropper" data="{{...cropperOpt}}"></template>
+    <view class="remind" style="bottom:{{remindBottom}}px;height:30px;line-height: 30px;position:absolute;text-align: center;font-size: 26rpx;color:#FFF;" wx:if="{{remidHeight>30}}">
+        您可以通过拖动、缩放图片适应裁剪尺寸
+    </view>
+    <view class="cropper-buttons">
+        <form bindsubmit="getCropperImage" reportSubmit="true">
+            <button plain class="formidBtn" formType="submit" style="border:none;">
+                <view class="getCropperImage">{{name}}</view>
+            </button>
+        </form>
+    </view>
+</view>

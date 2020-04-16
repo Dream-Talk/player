@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "更多好玩",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "ads": "../../components/ad/ad",
+        "attention": "/components/attention/attention"
+    }
+}

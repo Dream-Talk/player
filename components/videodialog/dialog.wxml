@@ -1,0 +1,15 @@
+<view wx:if="{{isShowVideoDialog}}">
+    <view class="videoDialogCover"></view>
+    <view class="videoDialog">
+        <view class="content">
+            {{content}}
+        </view>
+        <view bindtap="viewVideo" class="button">
+            <image src="/styles/video_white.png"></image>
+            {{confirmText}}
+        </view>
+        <view bindtap="closeDialog" style="position: absolute;right: 0;top: 0;" wx:if="{{from!='xinliceshi'}}">
+            <image lazyLoad="{{true}}" src="/styles/fork.png" style="width: 48rpx;height: 48rpx;margin: 20rpx;"></image>
+        </view>
+    </view>
+</view>

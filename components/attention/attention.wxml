@@ -1,0 +1,50 @@
+<view class="conta">
+    <authorizationdialog app_img="{{attention_img}}" app_logo="{{attention_logo}}" app_name="保存到手机上，进行识别关注" bind:confirm="confirm1" btn_name="保存" dialog_type="1" id="authodialog1" wx:if="{{dialog_type=='1'}}"></authorizationdialog>
+    <authorizationdialog app_logo="{{attention_logo}}" app_name="{{attention_name}}" bind:confirm="confirm2" btn_name="{{attention_btn_name||'回复1关注公众号'}}" dialog_type="2" id="authodialog2" wx:elif="{{dialog_type=='2'}}"></authorizationdialog>
+    <authorizationdialog app_logo="{{attention_logo}}" app_name="{{attention_name}}" bind:confirm="confirm3" btn_name="复制公众号名称" dialog_type="3" id="authodialog3" wx:elif="{{dialog_type=='3'}}"></authorizationdialog>
+    <view class="guanzhu gzclass" wx:if="{{attention_type=='zhima'}}">
+        <view class="guanzhu_title">
+            {{attention_name}}关联的公众号
+        </view>
+        <view class="guanzhu_content">
+            <view class="gz_ct_left">
+                <image src="{{attention_logo}}"></image>
+            </view>
+            <view class="gz_ct_middle">
+                <view class="gz_ct_midtop">
+                {{attention_name}}
+              </view>
+                <view class="gz_ct_midbot">
+                {{attention_content}}
+              </view>
+            </view>
+            <view class="gz_ct_right">
+                <button bindtap="{{'showtype'+dialog_type}}" lang="zh_CN" size="mini" type="default">{{attention_btn}}</button>
+            </view>
+        </view>
+    </view>
+    <block wx:elif="{{attention_type=='weichat'}}">
+        <official-account binderror="getgzerroresult" bindload="getgzsucesseresult" wx:if="{{is_effictive!='-1'&&is_config=='1'}}"></official-account>
+        <view class="guanzhu gzclass" wx:else>
+            <view class="guanzhu_title">
+              {{attention_name}}关联的公众号
+          </view>
+            <view class="guanzhu_content">
+                <view class="gz_ct_left">
+                    <image src="{{attention_logo}}"></image>
+                </view>
+                <view class="gz_ct_middle">
+                    <view class="gz_ct_midtop">
+                  {{attention_name}}
+                </view>
+                    <view class="gz_ct_midbot">
+                  {{attention_content}}
+                </view>
+                </view>
+                <view class="gz_ct_right">
+                    <button bindtap="{{'showtype'+dialog_type}}" lang="zh_CN" size="mini" type="default">{{attention_btn}}</button>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

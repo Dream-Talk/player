@@ -1,0 +1,21 @@
+<view bindtap="toggleShowDialog" class="zan-popup {{showSharePopup?'zan-popup--show':''}}">
+    <view catchtap="stop" class="zan-popup__container">
+        <view class="share-wrapper">
+            <button catchtap="shareToChats" class="share-item shareButton" openType="share">
+                <view class="share-item-avatar">
+                    <image src="https://youtupics.maiyizhi.cn/weixin_icon.png"></image>
+                </view>
+                <view class="share-item-name">微信</view>
+            </button>
+            <button catchtap="shareToMoments" class="share-item shareButton">
+                <view class="share-item-avatar">
+                    <image src="https://youtupics.maiyizhi.cn/pengyouquan_icon.png"></image>
+                </view>
+                <view class="share-item-name">朋友</view>
+            </button>
+        </view>
+        <view class="cancel">
+            <view catchtap="toggleShowDialog" class="button">取消</view>
+        </view>
+    </view>
+</view>

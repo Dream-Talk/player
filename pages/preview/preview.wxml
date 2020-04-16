@@ -1,0 +1,84 @@
+<view class="container page__bd" style="position: relative;padding-bottom: 30rpx;">
+    <view class="flex_row_center">
+        <image bindload="loadImage" bindtap="preview" lazyload="{{true}}" mode="aspectFit" src="{{pic_url}}" style="width: {{width}}rpx;height: {{height}}rpx;margin:0 {{margin}}rpx;margin: 20rpx 0;border-radius: 3px;"></image>
+    </view>
+    <view style="margin-top: 10rpx;">
+        <view class="flex_row" style="width: 690rpx;margin: 30rpx auto;margin-top: 70rpx;" wx:if="{{canOpenQzonePublish}}">
+            <button class="flex_center _scale" openType="share" shareType="{{27}}" style="width: 330rpx;height: 88rpx;line-height: 88rpx;margin-right: 30rpx;;color: #ffffff;font-size: 32rpx;background-color:rgb(63, 115, 230);overflow: visible;">
+                <image src="/styles/fenxsiang.png" style="width: 40rpx;height: 40rpx;margin-right: 6rpx;"></image>
+                <view>叫人来测</view>
+                <view class="bubble">可以偷看朋友答案哦</view>
+            </button>
+            <button catchtap="openQzonePublish" class="flex_center" style="width: 330rpx;height: 88rpx;line-height: 88rpx;color: #ffffff;font-size: 32rpx;background-color: #8b51f4;" type="default">
+                <image src="/styles/shuoshuo.png" style="width: 46rpx;height: 46rpx;margin-right: 6rpx;"></image>
+                <view>发到说说</view>
+            </button>
+        </view>
+        <view class="flex_row" style="width: 690rpx;margin: 30rpx auto;margin-top: 0;" wx:else>
+            <button class="flex_center _scale" openType="share" shareType="{{27}}" style="width: 330rpx;height: 88rpx;line-height: 88rpx;margin-right: 30rpx;;color: #8b51f4;font-size: 32rpx;border: 1px solid #8b51f4;overflow: visible;">
+                <image src="/styles/fenxiang.png" style="width: 40rpx;height: 40rpx;margin-right: 6rpx;"></image>
+                <view>叫人来测</view>
+                <view class="bubble">可以偷看朋友答案哦</view>
+            </button>
+            <button bindopensetting="openSetting" class="flex_center" openType="openSetting" style="width: 330rpx;height: 88rpx;line-height: 88rpx;color: #fff;font-size: 32rpx;background-color: #8b51f4;" type="default" wx:if="{{authSettingScopeWritePhotosAlbum&&canIUseOpenSetting}}">
+                <image src="/styles/xiazai.png" style="width: 40rpx;height: 40rpx;margin-right: 10rpx;"></image>
+                <view>保存测试结果</view>
+            </button>
+            <button catchtap="save" class="flex_center" formType="submit" style="width: 330rpx;height: 88rpx;line-height: 88rpx;color: #fff;font-size: 32rpx;background-color: #8b51f4;" type="default" wx:else>
+                <image src="/styles/xiazai.png" style="width: 40rpx;height: 40rpx;margin-right: 10rpx;"></image>
+                <view>保存测试结果</view>
+            </button>
+        </view>
+    </view>
+    <view style="margin: 30rpx 0;background-color: #fff;" wx:if="{{list}}">
+        <view class="flex_col_center">
+            <view style="flex: 1;padding-top: 20rpx;padding-left: 30rpx;font-size: 32rpx;font-weight: bold;">大家都在测</view>
+            <view bindtap="refreshList" class="flex_col_center" style="padding: 20rpx 30rpx 0 40rpx;font-size: 32rpx;">
+                <image src="/styles/refresh.png" style="width: 32rpx;height: 32rpx;margin-right: 10rpx;"></image>
+          换一批
+        </view>
+        </view>
+        <block wx:for="{{list}}" wx:key="{{index}}">
+            <view bindtap="selectTemplate" class="flex_col_center" data-id="{{item.id}}" data-path="{{item.path}}" style="padding: 20rpx 30rpx;border-bottom: {{index==4?'':'1px solid #f2f2f2'}};">
+                <view>
+                    <image lazyLoad="{{true}}" mode="aspectFit" src="{{item.avatar.url}}{{tuijianPicSize}}" style="display: block;width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;" wx:if="{{item.avatar.url}}"></image>
+                    <view style="width: 120rpx;height: 120rpx;margin-right: 20rpx;border-radius: 6rpx;background-color: #7f7f7f;" wx:else></view>
+                </view>
+                <view style="flex: 1;">
+                    <view class="name">{{item.name}}</view>
+                    <view class="star">{{item.times}}人在测</view>
+                </view>
+                <image src="/styles/next.png" style="width: 32rpx;height: 32rpx;"></image>
+            </view>
+            <ads ad="ad" bind:openContact="guanzhu" name="{{guanggaoName}}" page="preview" type="ad" width="750" wx:if="{{index==1}}"></ads>
+        </block>
+    </view>
+    <view class="weui-tab__content" wx:elif="{{list.length==0}}">
+        <template is="empty_list" data="{{title:'暂时没有找到呢'}}"></template>
+    </view>
+</view>
+<view class="dialog {{animateCss}}" style="position: fixed;top:0;left:0;width:750rpx;height:100vh;background-color: rgba(0,0,0,0.6);" wx:if="{{hasSave}}">
+    <view style="width:600rpx;height:300rpx;background-color: #FFF;position: fixed;top:50%;left:50%;transform: translateX(-50%) translateY(-50%);text-align: center;border-radius: 5px">
+        <view style="height:210rpx;display:flex;align-items: center;justify-content: center;font-size: 36rpx;color:#727172">
+            <view>
+                <view>图片已保存到相册</view>
+                <view>快去发好友和{{AppPlatform!='qq'?'朋友圈':'QQ空间'}}吧</view>
+            </view>
+        </view>
+        <view class="flex_col_center space_between" style="border-top:solid #eaeaea 1px;">
+            <navigator hoverClass="none" openType="switchTab" style="flex:1;height:90rpx;line-height: 90rpx;" url="/pages/zhuangx/list/list">更多好玩</navigator>
+            <view catchtap="{{ceshiGuanggao?'openContact':'hideDialog'}}" style="color:#1aad19;height:90rpx;line-height: 90rpx;font-size: 36rpx;border-left:solid #eaeaea 1px;flex:1;" wx:if="{{AppPlatform!='qq'}}">{{ceshiGuanggao?ceshiGuanggao.name:'我知道啦'}}</view>
+        </view>
+        <view bindtap="hideDialog" style="position: absolute;right:-35rpx;top:-35rpx;">
+            <image src="https://youtupics.maiyizhi.cn/guanbi3.png" style="width:70rpx;height:70rpx;"></image>
+        </view>
+    </view>
+</view>
+<guide bind:confirm="guideConfirm" guideParams="{{guideParams}}" wx:if="{{showContactMenu}}"></guide>
+<video-dialog bind:viewVideo="continueViewVideo" confirmText="{{confirmText}}" content="{{videoContent}}" isShowVideoDialog="{{isShowVideoDialog}}"></video-dialog>
+<ads bind:openContact="guanzhu" guanzhu="guanzhu" name="{{guanggaoName}}" page="preview" type="guanzhu"></ads>
+<view wx:if="{{isShowKaiping}}">
+    <ads bind:openContact="guanzhu" kaiping="kaiping" name="{{guanggaoName}}" page="preview" type="kaiping"></ads>
+</view>
+<ads bind:ended="endedRewardedVideoAd" bind:error="errorRewardedVideoAd" bind:loadsuccess="loadedRewardedVideoAd" bind:noended="pauseRewardedVideoAd" id="rewardedVideoAd" name="{{guanggaoName}}" page="{{appName}}" type="rewardedVideoAd" wx:if="{{isShowRewardedVideoAd}}"></ads>
+<jion-mini></jion-mini>

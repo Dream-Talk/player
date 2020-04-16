@@ -1,0 +1,97 @@
+page {
+    background-color: #f2f2f2;
+}
+
+.result {
+    margin: 30rpx 40rpx;
+    padding: 20rpx;
+    border-radius: 6rpx;
+    background-color: #fff;
+}
+
+.title {
+    font-size: 38rpx;
+    text-align: center;
+}
+
+.resultList {
+    padding: 20rpx 0;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.resultList:last-child {
+    border-bottom: none;
+}
+
+.spacing-line {
+    width: 100vw;
+    height: 20rpx;
+    background: #f2f2f2;
+}
+
+.bubble {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: -60rpx;
+    transform: translateX(-50%);
+    width: 300rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 28rpx;
+    border-radius: 40rpx;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.bubble::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0,0,0,0.5);
+}
+
+@-webkit-keyframes scale {
+    from {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.scale {
+    animation-name: scale;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}

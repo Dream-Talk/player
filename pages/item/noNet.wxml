@@ -1,0 +1,11 @@
+<template name="nonet">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <image src="/styles/nonet.png" style="width: 400rpx;height:400rpx;"></image>
+        </view>
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title" style="color: #888;">{{title}}</view>
+            <view class="weui-msg__desc">{{desc}}</view>
+        </view>
+    </view>
+</template>

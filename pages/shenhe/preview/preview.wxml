@@ -1,0 +1,26 @@
+<view class="container page__bd" style="position: relative;overflow: hidden;height: 100vh">
+    <view class="flex_row_center">
+        <image bindtap="preview" lazyload="true" mode="aspectFit" src="{{pic_url}}" style="width:{{width}}rpx;max-width:750rpx;height: {{height}}rpx;margin:0 {{margin}}rpx;margin-top: 30rpx;"></image>
+    </view>
+    <view style="margin-top: 30rpx;height: 230rpx;">
+        <form bindsubmit="save" reportSubmit="true">
+            <button class="weui-btn" formType="submit" style="width:600rpx;height: 88rpx;line-height:88rpx;" type="primary">
+                保存到相册
+            </button>
+        </form>
+        <view class="flex_center">
+            <form bindsubmit="select" reportSubmit="true">
+                <button class="weui-btn" formType="submit" openType="share" style="width:290rpx;height: 88rpx;line-height:88rpx;margin-top: 20rpx;margin-right: 10rpx" type="default">
+                    邀请朋友玩
+                </button>
+            </form>
+            <form bindsubmit="select" reportSubmit="true">
+                <navigator appId="wxab0b8413a26e53cf" style="width:290rpx;height: 88rpx;line-height:88rpx;margin-top: 20rpx;margin-left: 10rpx" target="miniProgram">
+                    <button class="weui-btn" style="width:290rpx;height: 88rpx;line-height:88rpx;" type="default">
+                        更多好玩
+                    </button>
+                </navigator>
+            </form>
+        </view>
+    </view>
+</view>

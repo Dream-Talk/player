@@ -1,0 +1,6 @@
+<view class="audioBox" style="width:578rpx;height:100rpx;line-height:100rpx;background-color:#010101;">
+    <image catchtap="stopMusic" src="/styles/pause_circle_outline.svg" style="width:70rpx;height:70rpx;margin-left:30rpx;" wx:if="{{stopMusic}}"></image>
+    <image catchtap="startMusic" src="/styles/play-circle-outline.svg" style="width:70rpx;height:70rpx;margin-left:30rpx;" wx:if="{{!stopMusic}}"></image>
+    <slider showValue bindchange="sliderchange" blockSize="18" max="{{duration}}" min="0" style="width:260rpx;" value="{{currentTime}}"></slider>
+    <view style="color:#fff;font-size:12;">{{duration}}</view>
+</view>

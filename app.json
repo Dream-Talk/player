@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/counsel/index/index",
+    "pages/counsel/result/result",
+    "pages/counsel/list/list",
+    "pages/webview/webview",
+    "pages/counsel/detail/detail",
+    "pages/preview/preview",
+    "pages/shenhe/index/index",
+    "pages/shenhe/preview/preview",
+    "pages/shenhe/cutInside/cutInside",
+    "pages/zhuangx/list/list",
+    "pages/zhuangx/edit/edit",
+    "pages/tuijian/tuijian",
+    "pages/mine/mine",
+    "pages/detail/detail",
+    "pages/zhuangx/cutInside/cutInside",
+    "pages/search/search"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#b69eef",
+    "navigationBarTitleText": "心理测试",
+    "navigationBarTextStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 20000
+  },
+  "navigateToMiniProgramAppIdList": [
+  ],
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

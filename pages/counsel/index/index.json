@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 200,
+    "usingComponents": {
+        "attention": "/components/attention/attention"
+    }
+}

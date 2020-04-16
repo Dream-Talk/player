@@ -1,0 +1,106 @@
+.cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 105;
+}
+
+.guideBox {
+    position: fixed;
+    transform: translateX(-50%) translateY(-50%);
+    width: 650rpx;
+    padding: 40rpx 0;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #fff;
+    z-index: 110;
+}
+
+.desText {
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #999;
+    font-size: 13px;
+}
+
+.guideImages {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20rpx;
+}
+
+.comfirmText {
+    width: 600rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #13ae11;
+    background-color: transparent;
+    border: 1px solid #13ae11;
+    margin-top: 40rpx;
+}
+
+@-webkit-keyframes slideLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+.slideLeft {
+    animation-name: slideLeft;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+@-webkit-keyframes slideRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.slideRight {
+    animation-name: slideRight;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}

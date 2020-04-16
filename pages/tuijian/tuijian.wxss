@@ -1,0 +1,60 @@
+page {
+    background-color: #FFF;
+}
+
+#slide {
+    width: 750rpx;
+    height: 300rpx;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+}
+
+.grid {
+    border-radius: 75rpx;
+    position: relative;
+    margin: 30rpx 45rpx 0 45rpx;
+    width: 97.5rpx;
+    height: 97.5rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.weui-grid__icon {
+    width: 50rpx;
+    height: 50rpx;
+    padding-top: 24rpx;
+}
+
+.weui-grid__label {
+    color: #333;
+    font-size: 10pt;
+}
+
+.block {
+    width: 183rpx;
+    padding: 20rpx 0;
+    box-sizing: border-box;
+    border-radius: 6rpx;
+}
+
+.block .icon {
+    width: 120rpx;
+    height: 120rpx;
+    margin-bottom: 20rpx;
+    border-radius: 40rpx;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.icon image {
+    width: 100%;
+    height: 100%;
+}
+
+.gzclassw {
+    position: fixed;
+    top: -50vh;
+}

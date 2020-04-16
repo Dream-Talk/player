@@ -1,0 +1,6 @@
+<view bindtap="cancelJoinMini" class="jionBox scale" style="top: {{top+10}}px" wx:if="{{isShowJoinMini}}">
+    <view class="desText">点击 {{AppPlatform!='qq_mini'?'【添加到我的小程序】':'【置顶】'}}，每天收获新测试</view>
+    <view>
+        <image class="cancel" src="https://qpics.maiyizhi.cn/upload_file_to_tx_15465678253_cancel.png"></image>
+    </view>
+</view>

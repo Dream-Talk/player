@@ -1,0 +1,14 @@
+<view bindtap="hide" class="author" hidden="{{is_author}}" id="author">
+    <view class="sq_contain" id="sq_contain">
+        <view class="sq_contain_cricle"></view>
+        <image class="app_logo" src="{{app_logo}}"></image>
+        <view class="sq_contain_title1">
+              {{app_name}}
+            </view>
+        <image class="gzh_img" src="{{app_img}}" wx:if="{{app_img!=''}}"></image>
+        <view class="sq_contain_content">
+            <button bindtap="_confirm" lang="zh_CN" openType="contact" size="mini" type="default" wx:if="{{dialog_type=='2'}}">{{btn_name}}</button>
+            <button bindtap="_confirm" lang="zh_CN" size="mini" type="default" wx:else>{{btn_name}}</button>
+        </view>
+    </view>
+</view>
